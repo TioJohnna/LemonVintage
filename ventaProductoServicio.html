@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Venta de Productos y Servicios</title>
+</head>
+
+<body>
+<h1>Venta de Productos y Servicios</h1>
+<form action="" method="get">
+    <fieldset>
+      <legend>Buscar Producto o Servicio  </legend>
+  </fieldset>
+	<p>
+  <label for="tipo_producto">Tipo de Producto o Servicio:</label>
+	  <input type="text" name="tipo_producto" id="tipo_producto" />
+      <label for="ancho">Ancho:</label>
+      <input type="text" name="ancho" id="ancho" />
+      <label for="alto">Alto:</label>
+      <input type="text" name="alto" id="alto" />
+      <input type="submit" name="buscar" id="buscar" value="Buscar" />
+  </p>
+    <fieldset>
+      <legend>Productos o Servicios Encontrados</legend>
+      <table width="600" border="0">
+        <tr>
+          <td>Producto|Servicio</td>
+          <td>Ancho</td>
+          <td>Alto</td>
+          <td>Color</td>
+          <td>Precio</td>
+          <td>Acciones</td>
+        </tr>
+        <tr>
+          <td>Ventana Espejo</td>
+          <td>120</td>
+          <td>50</td>
+          <td>Natural</td>
+          <td>$50.000</td>
+          <td><input type="submit" name="agregar" id="agregar" value="Agregar" /></td>
+        </tr>
+        <tr>
+          <td colspan="4">Total</td>
+          <td>$50.000</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+  </fieldset>
+    <fieldset>
+      <legend>Carrito de Compra</legend>
+      <table width="600" border="0">
+        <tr>
+          <td>Producto|Servicio</td>
+          <td>Ancho</td>
+          <td>Alto</td>
+          <td>Color</td>
+          <td>Precio</td>
+          <td>Acciones</td>
+        </tr>
+        <tr>
+          <td>Ventana Espejo</td>
+          <td>40</td>
+          <td>40</td>
+          <td>Blanca</td>
+          <td>$30.000</td>
+          <td><input type="submit" name="eliminar" id="eliminar" value="Eliminar" /></td>
+        </tr>
+        <tr>
+          <td colspan="4">Total</td>
+          <td>$30.000</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <p>
+        <input type="submit" name="comprar" id="comprar" value="Comprar" />
+        <input type="reset" name="cancelar" id="cancelar" value="Cancelar" />
+      </p>
+      <p>&nbsp;</p>
+  </fieldset>
+
+</form>
+</body>
+</html>
