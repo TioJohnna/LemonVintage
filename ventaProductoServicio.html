@@ -6,15 +6,15 @@
 </head>
 
 <body>
-<h1>Venta de Productos y Servicios</h1>
-<form action="" method="get">
+<h1 align="center">Venta de Productos y Servicios</h1>
+<form action="" method="get" style="text-align:center">
 	<fieldset>
     <h3>Vendedor	</h3>
 	<p>
       <label for="rut_vendedor">Rut Vendedor:</label>
       <input type="text" name="rut_vendedor" id="rut_vendedor" />
       <label for="nombre">Nombre Vendedor:</label>
-      <input type="text" name="nombre" id="nombre" />
+      <input name="nombre" type="text" id="nombre" readonly="readonly" />
       <input type="submit" name="buscar_vendedor" id="buscar_vendedor" value="Buscar" />
   </p>
   </fieldset>
@@ -26,7 +26,7 @@
         <label for="rut_cliente">Rut Cliente:</label>
         <input type="text" name="rut_cliente" id="rut_cliente" />
         <label for="nombre_cliente">Nombre Cliente:</label>
-        <input type="text" name="nombre_cliente" id="nombre_cliente" />
+        <input name="nombre_cliente" type="text" id="nombre_cliente" readonly="readonly" />
         <input type="submit" name="buscar_cliente" id="buscar_cliente" value="Buscar" />
       </p>
   </fieldset>
@@ -45,8 +45,10 @@
   </p>
   </fieldset>
     <fieldset>
-      <legend>Productos o Servicios Encontrados</legend>
-      <table width="600" border="0">
+      <h3>
+        <legend>Productos o Servicios Encontrados</legend>
+      </h3>
+      <table width="600" border="1" align="center">
         <tr>
           <td>Producto|Servicio</td>
           <td>Ancho</td>
@@ -74,7 +76,7 @@
       <h3>
         <legend>Carrito de Compra</legend>
       </h3>
-      <table width="600" border="0">
+      <table width="600" border="1" align="center">
         <tr>
           <td>Producto|Servicio</td>
           <td>Ancho</td>
@@ -97,7 +99,7 @@
           <td>&nbsp;</td>
         </tr>
       </table>
-      <p>
+      <p align="center">
         <input type="submit" name="comprar" id="comprar" value="Comprar" />
         <input type="reset" name="cancelar" id="cancelar" value="Cancelar" />
       </p>

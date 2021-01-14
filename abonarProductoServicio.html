@@ -2,17 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Venta de Productos y Servicios</title>
+<title>Sistema de Abonos</title>
 </head>
 
 <body>
-<h1 align="center">Cotizar Productos o Servicios</h1>
-<form action="" method="get" style="text-align:center">
-     <fieldset>
-      <h3>
-      <legend>Vendedor</legend>
-    </h3>
-    <p>
+<form id="form1" name="form1" method="post" action="" style="text-align:center">
+<fieldset>
+    <legend align="center"><h3>Vendedor</h3></legend>
+	<p>
       <label for="rut_vendedor">Rut Vendedor:</label>
       <input type="text" name="rut_vendedor" id="rut_vendedor" />
       <label for="nombre">Nombre Vendedor:</label>
@@ -21,9 +18,7 @@
   </p>
   </fieldset>
   <fieldset>
-      <h3>
-        <legend>Cliente</legend>
-      </h3>
+        <legend align="center"><h3>Cliente</h3></legend>
       <p>
         <label for="rut_cliente">Rut Cliente:</label>
         <input type="text" name="rut_cliente" id="rut_cliente" />
@@ -31,34 +26,28 @@
         <input name="nombre_cliente" type="text" id="nombre_cliente" readonly="readonly" />
         <input type="submit" name="buscar_cliente" id="buscar_cliente" value="Buscar" />
       </p>
-   </fieldset>
-   <fieldset>
-  <h3>
-    <legend>Cotizar</legend>
-  </h3>
-	<p>
-	  <label for="tipo_producto">Tipo de Producto o Servicio:</label>
-	  <input type="text" name="tipo_producto" id="tipo_producto" />
-  </p>
-	<p>
-	  <label for="alto">Descripción:</label>
-      <textarea name="alto" id="alto"></textarea>
-  </p>
-	<p>
-	  <label for="alto2">Alto:</label>
-	  <input type="text" name="alto2" id="alto2" />
-	</p>
-	<p>
-	  <label for="ancho">Ancho:</label>
-	  <input type="text" name="ancho" id="ancho" />
-	</p>
-	<p>
-      <input type="submit" name="cotizar" id="cotizar" value="Cotizar" />
-        <input type="reset" name="cancelar" id="cancelar" value="Cancelar" />
-      </p>
-      <p>&nbsp;</p>
   </fieldset>
-
+  <fieldset>
+  	  <legend align="center"><h3>Pedido a abonar</h3></legend>
+  	  <label for="id_boleta">ID Boleta:</label>
+  	  <input type="text" name="id_boleta" id="id_boleta" />
+  	  
+    <label for="total">Total Boleta</label>
+  	  <input name="total" type="text" id="total" readonly="readonly" />
+  	  <input type="submit" name="buscar_cliente2" id="buscar_cliente2" value="Buscar" />
+    
+  </fieldset>
+  <fieldset>
+  	<legend align="center"><h3>Abono </h3></legend>
+  	<p>
+  	  <label for="monto">Monto a Abonar</label>
+  	  <input type="text" name="monto" id="monto" />
+  	</p>
+  	<p>
+  	  <input type="submit" name="abonar" id="abonar" value="Abonar" />
+  	  <input type="submit" name="cancelar" id="cancelar" value="Cancelar" />
+  	</p>    
+  </fieldset>
 </form>
 </body>
 </html>
