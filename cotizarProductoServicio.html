@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Venta de Productos y Servicios</title>
+</head>
+
+<body>
+<h1>Cotizar Productos o Servicios</h1>
+<form action="" method="get">
+  <fieldset>
+  <legend></legend>
+  <legend></legend>
+  <fieldset>
+    <h3>
+      <legend>Vendedor</legend>
+    </h3>
+    <p>
+      <label for="rut_vendedor">Rut Vendedor:</label>
+      <input type="text" name="rut_vendedor" id="rut_vendedor" />
+      <label for="nombre">Nombre Vendedor:</label>
+      <input type="text" name="nombre" id="nombre" />
+      <input type="submit" name="buscar_vendedor" id="buscar_vendedor" value="Buscar" />
+  </p>
+  </fieldset>
+  <fieldset>
+      <h3>
+        <legend>Cliente</legend>
+      </h3>
+      <p>
+        <label for="rut_cliente">Rut Cliente:</label>
+        <input type="text" name="rut_cliente" id="rut_cliente" />
+        <label for="nombre_cliente">Nombre Cliente:</label>
+        <input type="text" name="nombre_cliente" id="nombre_cliente" />
+        <input type="submit" name="buscar_cliente" id="buscar_cliente" value="Buscar" />
+      </p>
+    </fieldset>
+  </fieldset>
+  <h3>
+    <legend>Cotizar</legend>
+  </h3>
+	<p>
+	  <label for="tipo_producto">Tipo de Producto o Servicio:</label>
+	  <input type="text" name="tipo_producto" id="tipo_producto" />
+  </p>
+	<p>
+	  <label for="alto">Descripción:</label>
+      <textarea name="alto" id="alto"></textarea>
+  </p>
+	<p>
+	  <label for="alto2">Alto:</label>
+	  <input type="text" name="alto2" id="alto2" />
+	</p>
+	<p>
+	  <label for="ancho">Ancho:</label>
+	  <input type="text" name="ancho" id="ancho" />
+	</p>
+	<p>
+	  <input type="submit" name="buscar" id="buscar" value="Buscar" />
+  </p>
+    <fieldset>
+      <legend></legend>
+  </fieldset>
+    <fieldset>
+      <p>
+        <input type="submit" name="cotizar" id="cotizar" value="Cotizar" />
+        <input type="reset" name="cancelar" id="cancelar" value="Cancelar" />
+      </p>
+      <p>&nbsp;</p>
+  </fieldset>
+
+</form>
+</body>
+</html>

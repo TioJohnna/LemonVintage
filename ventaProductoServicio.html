@@ -8,8 +8,31 @@
 <body>
 <h1>Venta de Productos y Servicios</h1>
 <form action="" method="get">
-    <fieldset>
-      <legend>Buscar Producto o Servicio  </legend>
+	<h3>Vendedor	</h3>
+	<p>
+      <label for="rut_vendedor">Rut Vendedor:</label>
+      <input type="text" name="rut_vendedor" id="rut_vendedor" />
+      <label for="nombre">Nombre Vendedor:</label>
+      <input type="text" name="nombre" id="nombre" />
+      <input type="submit" name="buscar_vendedor" id="buscar_vendedor" value="Buscar" />
+  </p>
+  <fieldset>
+      <h3>
+        <legend>Cliente</legend>
+    </h3>
+      <p>
+        <label for="rut_cliente">Rut Cliente:</label>
+        <input type="text" name="rut_cliente" id="rut_cliente" />
+        <label for="nombre_cliente">Nombre Cliente:</label>
+        <input type="text" name="nombre_cliente" id="nombre_cliente" />
+        <input type="submit" name="buscar_cliente" id="buscar_cliente" value="Buscar" />
+      </p>
+  </fieldset>
+  <h3>
+    <legend>Buscar Producto o Servicio  </legend>
+  </h3>
+  <fieldset>
+    
   </fieldset>
 	<p>
   <label for="tipo_producto">Tipo de Producto o Servicio:</label>
@@ -47,7 +70,9 @@
       </table>
   </fieldset>
     <fieldset>
-      <legend>Carrito de Compra</legend>
+      <h3>
+        <legend>Carrito de Compra</legend>
+      </h3>
       <table width="600" border="0">
         <tr>
           <td>Producto|Servicio</td>
