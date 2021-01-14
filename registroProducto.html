@@ -84,109 +84,104 @@
   <section id="hero" class="d-flex justify-cntent-center align-items-center">
     <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
 
-      <!-- Slide 1 -->
+
     
       <div class="carousel-item active">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Moderna</span></h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+
+          <form id="registroProducto" name="registroProducto" method="post" action="">        
+            <table border="0px">
+
+                <tr>
+                  <th colspan="2" scope="rowgroup"><h1><font color="whitesmoke">Registrar Producto</font></h1></th> 
+                </tr>
+              
+                <tr>
+                  <td><label for="producto"><font color="whitesmoke">Producto:</font></label></td>
+                  <td><input type="text" name="producto" id="producto" /></td>
+                </tr>
+
+                <tr>
+                  <td><label for="descripcion"><font color="whitesmoke">Descripción:</font></label></td>
+                  <td><input type="text" name="descripcion" id="descripcion" /></td>
+                </tr>
+
+                <tr>
+                  <td><label for="color"><font color="whitesmoke">Color:</font></label></td>
+                  <td><input type="text" name="color" id="color" /></td>
+                </tr>      
+
+                <tr>
+                  <td><label for="material"><font color="whitesmoke">Material:</font></label></td>
+                  <td><input type="text" name="material" id="material" /></td>
+                </tr>                
+
+                <tr>
+                  <td><label for="ancho"><font color="whitesmoke">Ancho:</font></label></td>
+                  <td><input type="text" name="ancho" id="ancho" /></td>
+                </tr>                
+
+                <tr>
+                  <td><label for="alto"><font color="whitesmoke">Alto:</font></label></td>
+                  <td><input type="text" name="alto" id="alto" /></td>
+                </tr>                
+
+                <tr>
+                  <td><label for="espesor"><font color="whitesmoke">Espesor:</font></label></td>
+                  <td><input type="text" name="espesor" id="espesor" /></td>
+                </tr>               
+
+                <tr>
+                  <td><label for="peso"><font color="whitesmoke">Peso:</font></label></td>
+                  <td><input type="text" name="peso" id="peso" /></td>
+                </tr>
+
+                <tr>
+                  <td><label for="precio"><font color="whitesmoke">Precio:</font></label></td>
+                  <td><input type="text" name="precio" id="precio" /></td>
+                </tr>
+
+                <tr>
+                  <td><label for="divisiones"><font color="whitesmoke">Divisiones:</font></label></td>
+                  <td><input type="text" name="divisiones" id="divisiones" /></td>
+                </tr>
+
+                <tr>
+                  <td><label for="accesorios"><font color="whitesmoke">Accesorios:</font></label></td>
+                  <td><input type="text" name="accesorios" id="accesorios" /></td>
+                </tr>
+
+                <tr>
+                  <td><label for="tipo_producto"><font color="whitesmoke">Tipo de Producto:</font></label></td>
+                  <td> <select name="tipo_producto" size="1" id="tipo_producto">
+                          <option value="1">Espejo</option>
+                          <option value="2">Puerta Solida</option>
+                          <option value="3">Puerta Vitriada</option>
+                          <option value="4">Mampara</option>
+                          <option value="5">Ventana</option>
+                          <option value="6">Otro</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                  <td> </td>
+                  <td><input type="submit" name="registrar" id="registrar" value="Registrar" />
+                  <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
+                  
+                  
+                  
+                </tr>
+
+            </table>
+          </form>
         </div>
       </div>
 
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="carousel-item">
-        <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
-        </div>
-      </div>
-
-      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-
+      
     </div>
   </section><!-- End Hero -->
-  <form id="form1" name="form1" method="post" action="">
-    <h1>Registrar Producto</h1>
-    <p>
-      <label for="nombre">Producto:</label>
-      <input type="text" name="nombre" id="nombre" />
-    </p>
-    <p>
-      <label for="descripcion">Descripción:</label>
-      <input type="text" name="descripcion" id="descripcion" />
-    </p>
-    <p>
-      <label for="color">Color:</label>
-      <input type="text" name="color" id="color" />
-    </p>
-    <p>
-      <label for="material">Material:</label>
-      <input type="text" name="material" id="material" />
-    </p>
-    <p>
-      <label for="ancho">Ancho:</label>
-      <input type="text" name="ancho" id="ancho" />
-    </p>
-    <p>
-      <label for="alto">Alto:</label>
-      <input type="text" name="alto" id="alto" />
-    </p>
-    <p>
-      <label for="espesor">Espesor:</label>
-      <input type="text" name="espesor" id="espesor" />
-    </p>
-    <p>
-      <label for="peso">Peso:</label>
-      <input type="text" name="peso" id="peso" />
-    </p>
-    <p>
-      <label for="precio">Precio:</label>
-      <input type="text" name="precio" id="precio" />
-    </p>
-    <p>
-      <label for="divisiones">Divisiones:</label>
-      <input type="text" name="divisiones" id="divisiones" />
-    </p>
-    <p>
-      <label for="accesorios">Accesorios:</label>
-      <input type="text" name="accesorios" id="accesorios" />
-    </p>
-    <p>
-      <label for="tipo_producto">Tipo de Producto:</label>
-      <select name="tipo_producto" size="1" id="tipo_producto">
-        <option value="1">Espejo</option>
-        <option value="2">Puerta Solida</option>
-        <option value="3">Puerta Vitriada</option>
-        <option value="4">Mampara</option>
-        <option value="5">Ventana</option>
-        <option value="6">Otro</option>
-      </select>
-    </p>
-    <p>
-      <input type="submit" name="registrar" id="registrar" value="Agregar" />
-      <input type="reset" name="Restablecer" id="Restablecer" value="Restablecer" />
-    </p>
-    <p>&nbsp;</p>
-  </form>
+
 
   
 

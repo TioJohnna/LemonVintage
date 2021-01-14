@@ -88,20 +88,17 @@
     
       <div class="carousel-item active">
         <div class="carousel-container">
-          
-          <form id="registroTipoProducto" name="registroTipoProducto" method="post" action="">          
-            <table class="default" background-color:red;>
 
-              <tbody>
+          <form id="registroCliente" name="registroCliente" method="post" action="">        
+            <table border="0px">
+
                 <tr>
-                  <th colspan="2" scope="rowgroup"><h1><font color="whitesmoke">Registro Tipo Producto</font></h1></th>
+                  <th colspan="2" scope="rowgroup"><h1><font color="whitesmoke">Registrar Servicio</font></h1></th> 
                 </tr>
               
                 <tr>
-                
-                  <td><label for="tipo_producto"><font color="whitesmoke">Tipo de Producto:</font></label></td>
-                
-                  <td><input type="text" name="tipo_producto" id="tipo_producto" /></td>
+                  <td><label for="nombre"><font color="whitesmoke">Servicio:</font></label></td>
+                  <td><input type="text" name="nombre" id="nombre" /></td>
                 </tr>
 
                 <tr>
@@ -110,15 +107,35 @@
                 </tr>
 
                 <tr>
-                  <td></td>
+                  <td><label for="f_inicio"><font color="whitesmoke">Fecha de Inicio:</font></label></td>
+                  <td><input type="text" name="f_inicio" id="f_inicio" /></td>
+                </tr>      
+
+                <tr>
+                  <td><label for="f_termino"><font color="whitesmoke">Fecha de Termino:</font></label></td>
+                  <td><input type="text" name="f_termino" id="f_termino" /></td>
+                </tr>                
+
+                <tr>
+                  <td><label for="estado"><font color="whitesmoke">Estado:</font></label></td>
+                  <td><input type="text" name="estado" id="estado" /></td>
+                </tr>                
+
+                <tr>
+                  <td> </td>
                   <td><input type="submit" name="registrar" id="registrar" value="Registrar" />
                   <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
+                  
+                  
+                  
                 </tr>
-              </tbody>
+
             </table>
           </form>
         </div>
       </div>
+
+      
     </div>
   </section><!-- End Hero -->
 
