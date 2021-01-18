@@ -42,12 +42,13 @@ CREATE TABLE cliente (
     rut          VARCHAR(10),
     telefono     VARCHAR(50),
     correo       VARCHAR(50),
-    dirección    VARCHAR(50),
+    direccion    VARCHAR(50),
     comuna       VARCHAR(50),
     region       VARCHAR(50)
 );
 
 ALTER TABLE cliente ADD CONSTRAINT cliente_pk PRIMARY KEY ( id_cliente ) ;
+ALTER TABLE `cliente` ADD UNIQUE( `rut`);
 ALTER TABLE `cliente` CHANGE `id_cliente` `id_cliente` INT(11) NOT NULL AUTO_INCREMENT; 
 
 CREATE TABLE detalle_cotizacion (
@@ -128,6 +129,7 @@ ALTER TABLE `tipo_producto` CHANGE `id_tipo_producto` `id_tipo_producto` INT(11)
 
 CREATE TABLE vendedor (
     id_vendedor   INTEGER NOT NULL,
+    rut           VARCHAR(10),
     nombre        VARCHAR(50),
     apellido      VARCHAR(50),
     telefono      VARCHAR(20),
@@ -137,6 +139,7 @@ CREATE TABLE vendedor (
 );
 
 ALTER TABLE vendedor ADD CONSTRAINT vendedor_pk PRIMARY KEY ( id_vendedor ) ;
+ALTER TABLE vendedor ADD UNIQUE( `rut`);
 ALTER TABLE `vendedor` CHANGE `id_vendedor` `id_vendedor` INT(11) NOT NULL AUTO_INCREMENT; 
 
 ALTER TABLE boleta

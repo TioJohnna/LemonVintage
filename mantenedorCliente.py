@@ -133,6 +133,6 @@ def eliminar(idCliente):
 #actualizar(auxCliente)
 #buscar("5555")
 #--------------------------
-#Prueba de eliminar cliente por id_cliente
-eliminar(5)
-consultar()
+#Prueba de eliminar cliente por id_cliente OK
+#eliminar(5)
+#consultar()
