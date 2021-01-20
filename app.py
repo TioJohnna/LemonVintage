@@ -1,20 +1,45 @@
-#Programa Principal de Arranque
-from flask import Flask,render_template
+#importar controlador
+import mantenedorCliente
+#importar modelo
+import claseCliente
+from flask import Flask,render_template,request,flash,redirect,url_for
 app = Flask(__name__)
-
+#Programa Principal de Arranque
 #Rutear el home (la raiz del sitio)
 @app.route('/')
 
 def Index():
     #return ("Prueba de pagina levantada por el servidor de aplicaciones")
-    return render_template('mantenedorCliente.html')
+    return render_template('registroCliente.html')
 
 #route de la accion del formulario y agregar el metodo del formulario
 #metodo post esconde los datos
 #metodo get muestra los datos
-#@app.route('/ingresarCliente',methods=['POST'])
+@app.route('/ingresarCliente',methods=['POST'])
 
-#def ingresarCliente():
+def ingresarCliente():
+    if request.method == 'POST':
+        try:
+            auxBotonRegistrar = request.form['btnRegistrar']
+            if auxBotonRegistrar == 'Registrar':
+                auxRut = request.form['txtRut']
+                auxNombe = request.form['txtNombre']
+                auxApellido = request.form['txtApellido']
+                auxTelefono = request.form['txtTelefono']
+                auxCorreo = request.form['txtCorreo']
+                auxDireccion = request.form['txtDireccion']
+                auxComuna = request.form['txtComuna']
+                auxRegion = request.form['txtRegion']
+                auxCliente = claseCliente.Cliente(0,auxNombe,auxApellido,auxRut,auxTelefono,auxCorreo,auxDireccion,auxComuna,auxRegion)
+                mantenedorCliente.insertar(auxCliente)
+                print("Datos guardados")
+                #flash("Datos Guardados")
+
+        except:
+            print("Datos no guardados")
+            #flash("Datos no guardados")
+
+        return redirect(url_for('Index'))
 
 
 if __name__ == '__main__':
