@@ -8,9 +8,18 @@ app = Flask(__name__)
 #Rutear el home (la raiz del sitio)
 @app.route('/')
 
+
 def Index():
-    #return ("Prueba de pagina levantada por el servidor de aplicaciones")
-    return render_template('registroCliente.html')
+    #return señala cual es la pagina que va levantar
+    #return render_template('Index.html') #levanta la pagina home
+
+    #guarda una coleccion con los datos 
+    datos = mantenedorCliente.consultar()
+    #renderiza la pagina clientes y a la vez manda los datos almacenados en un arreglo clientes
+    return render_template('registroCliente.html',clientes=datos)
+
+    #renderizacion de la pagina limpia
+    #return render_template('registroCliente.html')
 
 #route de la accion del formulario y agregar el metodo del formulario
 #metodo post esconde los datos
@@ -19,6 +28,7 @@ def Index():
 
 def ingresarCliente():
     if request.method == 'POST':
+        #CREATE
         try:
             auxBotonRegistrar = request.form['btnRegistrar']
             if auxBotonRegistrar == 'Registrar':
@@ -38,7 +48,7 @@ def ingresarCliente():
         except:
             print("Datos no guardados")
             #flash("Datos no guardados")
-
+        #es necesario redireccionar para que no se caiga luego de insertar
         return redirect(url_for('Index'))
 
 

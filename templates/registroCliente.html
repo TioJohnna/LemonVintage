@@ -140,13 +140,37 @@
                   <td> </td>
                   <td><input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
                   <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
-                  
-                  
-                  
                 </tr>
-
             </table>
+
+            <!-- mostrar datos guardados en tabla -->
+          <table width="600" border="1" align="center">
+            <thead>
+              <tr>
+                <td>Id</td>
+                <td>Rut</td>
+                <td>Nombre</td>
+                <td>Acciones</td>
+              </tr>
+            </thead>
+          <tbody>
+            {% for cli in clientes %}
+              <tr>
+                <td>{{cli.0}}</td>
+                <td>{{cli.1}}</td>
+                <td>{{cli.2}}</td>
+                <td>
+                  <input type="submit" name="btnModificar" id="btnModificar" value="Modificar" />
+                  <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- fin mostrar grilla-->
+
           </form>
+
         </div>
       </div>
 
