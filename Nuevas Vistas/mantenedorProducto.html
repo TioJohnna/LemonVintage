@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Mantenedor Producto</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="" >
+    <table border="0px" align="center">
+        <tr>
+          <th colspan="2" scope="rowgroup"><h1>Mantenedor Producto</h1></th> 
+        </tr>
+        </tr>
+        <tr>
+          <td align="right"><label for="rut">Id Producto:</label></td>
+          <td><input name="txtIdcliente" type="text" id="txtIdcliente" readonly="readonly" /></td>
+      </tr>
+        <tr>
+          <td align="right"><label for="rut">Rut:</label></td>
+          <td><input type="text" name="txtRut" id="txtRut" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="nombre">Nombre:</label></td>
+          <td><input type="text" name="txtNombre" id="txtNombre" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="apellido">Apellido:</label></td>
+          <td><input type="text" name="txtApellido" id="txtApellido" /></td>
+        </tr>    
+        <tr>
+          <td align="right"><label for="telefono">Teléfono:</label></td>
+          <td><input type="text" name="txtTelefono" id="txtTelefono" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="correo">Correo:</label></td>
+          <td><input type="text" name="txtCorreo" id="txtCorreo" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="direccion">Dirección:</label></td>
+          <td><input type="text" name="txtDireccion" id="txtDireccion" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="comuna">Comuna:</label></td>
+          <td><input type="text" name="txtComuna" id="txtComuna" /></td>
+        </tr>             
+        <tr>
+          <td align="right"><label for="region">Región:</label></td>
+          <td><input type="text" name="txtRegion" id="txtRegion" /></td>
+        </tr>
+        <tr>
+          <td colspan="2"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
+          <input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar" />
+          <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />          
+          <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> 
+              <input type="submit" name="btnPrimero" id="btnPrimero" value="<<" />
+              <input type="submit" name="btnAnterior" id="btnAnterior" value="<" />
+              <input name="txtIdcliente" type="text" id="txtIdcliente" size="4" readonly="readonly" />
+              <input type="submit" name="btnSiguiente" id="btnSiguiente" value=">" />          
+              <input type="reset" name="btnUltimo" id="btnUltimo" value=">>" />
+          </td>
+      </tr>
+    </table>
+    <table width="100%" border="1" align="center">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Rut</td>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Teléfono</td>
+    <td>Correo</td>
+    <td>Dirección</td>
+    <td>Comuna</td>
+    <td>Región</td>
+  </tr>
+  </thead>
+  <tbody>
+  {% for cli in clientes %}
+  <tr>
+    <td>{{cli.0}}</td>
+    <td>{{cli.1}}</td>
+    <td>{{cli.2}}</td>
+    <td>{{cli.3}}</td>
+    <td>{{cli.4}}</td>
+    <td>{{cli.5}}</td>
+    <td>{{cli.6}}</td>
+    <td>{{cli.7}}</td>
+    <td>{{cli.8}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+    </form>
+</body>
+</html>

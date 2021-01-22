@@ -3,6 +3,7 @@ import mantenedorCliente
 #importar modelo
 import claseCliente
 from flask import Flask,render_template,request,flash,redirect,url_for
+
 app = Flask(__name__)
 #Programa Principal de Arranque
 #Rutear el home (la raiz del sitio)
