@@ -2,18 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Mantenedor Producto</title>
+<title>Mantenedor Cliente</title>
 </head>
+
 <body>
-<form id="form1" name="form1" method="post" action="" >
+    <form id="form1" name="form1" method="post" action="" >
     <table border="0px" align="center">
         <tr>
-          <th colspan="2" scope="rowgroup"><h1>Mantenedor Producto</h1></th> 
+          <th colspan="2" scope="rowgroup"><h1>Mantenedor Vendedor</h1></th> 
         </tr>
         </tr>
         <tr>
-          <td align="right"><label for="rut">Id Producto:</label></td>
-          <td><input name="txtIdcliente" type="text" id="txtIdcliente" readonly="readonly" /></td>
+          <td align="right"><label for="rut">Id Vendedor::</label></td>
+          <td><input name="txtIdvendedor" type="text" id="txtIdvendedor" readonly="readonly" /></td>
       </tr>
         <tr>
           <td align="right"><label for="rut">Rut:</label></td>
@@ -48,7 +49,7 @@
           <td><input type="text" name="txtRegion" id="txtRegion" /></td>
         </tr>
         <tr>
-          <td colspan="2"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
+          <td colspan="2" align="center"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
           <input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar" />
           <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />          
           <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
@@ -78,17 +79,17 @@
   </tr>
   </thead>
   <tbody>
-  {% for cli in clientes %}
+  {% for ven in vendedores %}
   <tr>
-    <td>{{cli.0}}</td>
-    <td>{{cli.1}}</td>
-    <td>{{cli.2}}</td>
-    <td>{{cli.3}}</td>
-    <td>{{cli.4}}</td>
-    <td>{{cli.5}}</td>
-    <td>{{cli.6}}</td>
-    <td>{{cli.7}}</td>
-    <td>{{cli.8}}</td>
+    <td>{{ven.0}}</td>
+    <td>{{ven.1}}</td>
+    <td>{{ven.2}}</td>
+    <td>{{ven.3}}</td>
+    <td>{{ven.4}}</td>
+    <td>{{ven.5}}</td>
+    <td>{{ven.6}}</td>
+    <td>{{ven.7}}</td>
+    <td>{{ven.8}}</td>
   </tr>
   {% endfor %}
   </tbody>

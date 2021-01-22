@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Mantenedor Producto</title>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="" >
+    <table border="0px" align="center">
+        <tr>
+          <th colspan="2" scope="rowgroup"><h1>Mantenedor Servicio</h1></th> 
+        </tr>
+        </tr>
+        <tr>
+          <td align="right"><label for="rut">ID Servicio:</label></td>
+          <td><input name="txtIdservicio" type="text" id="txtIdservicio" /></td>
+      </tr>
+        <tr>
+          <td align="right"><label for="rut">Nombre::</label></td>
+          <td><input type="text" name="txtNombre" id="txtNombre" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="nombre">Descripción::</label></td>
+          <td><textarea name="txtDescripcion" id="txtDescripcion"></textarea></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="apellido">Fecha Inicio::</label></td>
+          <td><input type="text" name="txtInicio" id="txtInicio" /></td>
+        </tr>    
+        <tr>
+          <td align="right"><label for="telefono">Fecha Termino:</label></td>
+          <td><input type="text" name="txtTermino" id="txtTermino" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="correo">Estado::</label></td>
+          <td><input type="text" name="txtEstado" id="txtEstado" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
+          <input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar" />
+          <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />          
+          <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> 
+              <input type="submit" name="btnPrimero" id="btnPrimero" value="<<" />
+              <input type="submit" name="btnAnterior" id="btnAnterior" value="<" />
+              <input name="txtIdcliente" type="text" id="txtIdcliente" size="4" readonly="readonly" />
+              <input type="submit" name="btnSiguiente" id="btnSiguiente" value=">" />          
+              <input type="reset" name="btnUltimo" id="btnUltimo" value=">>" />
+          </td>
+      </tr>
+    </table>
+    <table width="100%" border="1" align="center">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Nombre</td>
+    <td>Descripcion</td>
+    <td>Fecha Inicio</td>
+    <td>Fecha Termino</td>
+    <td>Estado</td>
+  </tr>
+  </thead>
+  <tbody>
+  {% for ser in servicios %}
+  <tr>
+    <td>{{ser.0}}</td>
+    <td>{{ser.1}}</td>
+    <td>{{ser.2}}</td>
+    <td>{{ser.3}}</td>
+    <td>{{ser.4}}</td>
+    <td>{{ser.5}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</form>
+</body>
+</html>
