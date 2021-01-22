@@ -15,7 +15,7 @@ def insertar(producto):
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "INSERT INTO producto(id_producto,nombre,descripcion,color,material,cantidad,ancho,largo,espesor,peso,precio,divisiones,accesorios,tipo_producto_id_tipo_producto) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+            consulta = "INSERT INTO producto(id_producto,nombre,descripcion,color,material,cantidad,ancho,alto,espesor,peso,precio,divisiones,accesorios,tipo_producto_id_tipo_producto) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
                         #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
@@ -29,11 +29,11 @@ def insertar(producto):
                 producto.cantidad,
                 producto.ancho,
                 producto.alto,
-                producto.espesor
-                producto.peso
-                producto.precio
-                producto.divisiones
-                producto.accesoios
+                producto.espesor,
+                producto.peso,
+                producto.precio,
+                producto.divisiones,
+                producto.accesorios,
                 producto.tipo_producto_id_tipo_producto))
     #commit para que ejecute la consulta y almacene
         conexion.commit
@@ -48,28 +48,28 @@ def consultar():
         with conexion.cursor() as cursor:
             cursor.execute("SELECT * FROM producto")
             #usamos fetchall para traer todos los datos
-            auxproducto = cursor.fetchall()
+            auxProducto = cursor.fetchall()
             #recorrer la coleccion
-            for ven in auxproducto:
-                print(ven)
-            return auxproducto
+            for pro in auxProducto:
+                print(pro)
+            return auxProducto
     except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
         print("Ocurrio un error al consultar: ", e)
     conexion.close
     #-----------------
-def buscar(Rut):
+def buscar(Id_producto):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "SELECT * FROM producto WHERE rut = %s;"
-            cursor.execute(consulta,(Rut))
+            consulta = "SELECT * FROM producto WHERE id_producto = %s;"
+            cursor.execute(consulta,(Id_producto))
             #usamos fetchall para traer todos los datos
-            auxproducto = cursor.fetchall()
+            auxProducto = cursor.fetchall()
             #recorrer la coleccion
-            for ven in auxproducto:
-                print(ven)
-            return auxproducto
+            for pro in auxProducto:
+                print(pro)
+            return auxProducto
     except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
         print("Ocurrio un error al buscar: ", e)
     conexion.close
@@ -80,21 +80,25 @@ def actualizar(producto):
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "UPDATE producto SET nombre = %s, apellido = %s, rut = %s, telefono = %s, correo = %s, direccion = %s, comuna = %s, region = %s WHERE id_producto = %s;"
-                        #%s hace referencia a una variable string
+            consulta = "UPDATE producto SET nombre = %s, descripcion = %s, color = %s, material = %s, cantidad = %s, ancho = %s, alto = %s, espesor = %s, peso = %s, precio = %s, divisiones = %s, accesorios = %s, tipo_producto_id_tipo_producto = %s WHERE id_producto = %s;"
+            #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
                         #En la siguiente linea excecute nos permite ejecutar varias veces con distintos datos
             cursor.execute(consulta,
                 (producto.nombre,
-                producto.apellido,
-                producto.rut,
-                producto.telefono,
-                producto.correo,
-                producto.direccion,
-                producto.comuna,
-                producto.region,
-                producto.id_producto))
+                producto.descripcion,
+                producto.color,
+                producto.material,
+                producto.cantidad,
+                producto.ancho,
+                producto.largo,
+                producto.espesor,
+                producto.peso,
+                producto.precio,
+                producto.divisiones,
+                producto.accesorios,
+                producto.tipo_producto_id_tipo_producto))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -102,17 +106,17 @@ def actualizar(producto):
         print("Error al actualizar datos ", ex)
     conexion.close
     #-----------------
-def eliminar(Rut):
+def eliminar(Id_producto):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "DELETE FROM producto WHERE rut = %s;"
+            consulta = "DELETE FROM producto WHERE id_producto = %s;"
                         #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
                         #En la siguiente linea excecute nos permite ejecutar varias veces con distintos datos
-            cursor.execute(consulta,(Rut))
+            cursor.execute(consulta,(Id_producto))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -123,9 +127,9 @@ def eliminar(Rut):
 #Programa principal
 #Prueba insertar OK
 #print("Conectado")
-#auxproducto = producto(0,"luci","fer","666","91560522","jcubillos@tooldesign.cl","americo vespucio 7732","la florida","RM")
-#insertar(auxproducto)
-#consultar()
+auxProducto = Producto(0,"puerta entrada","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",1)
+insertar(auxProducto)
+consultar()
 #print("Datos guardados")
 #---------------------------
 #Prueba Consultar OK

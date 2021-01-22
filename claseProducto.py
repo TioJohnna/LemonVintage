@@ -1,5 +1,5 @@
 class Producto:
-    def __init__(self,id_producto,nombre,descripcion,color,material,cantidad,ancho,alto,espesor,peso,precio,divisiones,accesorios,tipo_producto):
+    def __init__(self,id_producto,nombre,descripcion,color,material,cantidad,ancho,alto,espesor,peso,precio,divisiones,accesorios,tipo_producto_id_tipo_producto):
         self.id_producto = id_producto
         self.nombre = nombre
         self.descripcion = descripcion
@@ -13,7 +13,7 @@ class Producto:
         self.precio = precio
         self.divisiones = divisiones
         self.accesorios = accesorios
-        self.tipo_producto = tipo_producto     
+        self.tipo_producto_id_tipo_producto = tipo_producto_id_tipo_producto    
 #prueba de clase producto
 #auxProducto = Producto(0,"puerta","puerta de madera nativa","rojo","rauli",2,90,210,3.5,50,80000,2,"españoleta","puerta")
 #print(auxProducto.nombre + " " +str(auxProducto.espesor))
