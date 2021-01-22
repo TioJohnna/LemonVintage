@@ -92,13 +92,14 @@ def actualizar(producto):
                 producto.material,
                 producto.cantidad,
                 producto.ancho,
-                producto.largo,
+                producto.alto,
                 producto.espesor,
                 producto.peso,
                 producto.precio,
                 producto.divisiones,
                 producto.accesorios,
-                producto.tipo_producto_id_tipo_producto))
+                producto.tipo_producto_id_tipo_producto,
+                producto.id_producto))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -127,23 +128,23 @@ def eliminar(Id_producto):
 #Programa principal
 #Prueba insertar OK
 #print("Conectado")
-auxProducto = Producto(0,"puerta entrada","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",1)
-insertar(auxProducto)
-consultar()
+#auxProducto = Producto(0,"puerta 666","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",1)
+#insertar(auxProducto)
+#consultar()
 #print("Datos guardados")
 #---------------------------
 #Prueba Consultar OK
 #consultar()
 #--------------------------
-#Prueba buscar rut OK
-#buscar("666")
+#Prueba buscar id produccto OK
+#buscar(1)
 #--------------------------
-#Prueba actualizar producto por rut OK 
-#auxproducto = producto(2,"luci","fer","666","666","jona@tooldesign.cl","americo vespucio 7732","la florida","RM")
-#actualizar(auxproducto)
+#Prueba actualizar producto por id producto OK 
+#auxProducto = Producto(2,"SUPER puerta 666","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",1)
+#actualizar(auxProducto)
 #consultar()
 #buscar("5555")
 #--------------------------
-#Prueba de eliminar producto por rut OK
-#eliminar(666)
+#Prueba de eliminar producto por id producto OK
+#eliminar(2)
 #consultar()
