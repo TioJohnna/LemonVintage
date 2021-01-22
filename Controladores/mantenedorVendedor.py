@@ -1,5 +1,5 @@
 import pymysql
-from claseCliente import Cliente
+from claseVendedor import Vendedor
 #Conexion a la base de datos
 def conectar():
     try:
@@ -10,26 +10,26 @@ def conectar():
     return conexion
     
 
-def insertar(cliente):
+def insertar(vendedor):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "INSERT INTO cliente(id_cliente,nombre,apellido,rut,telefono,correo,direccion,comuna,region) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+            consulta = "INSERT INTO vendedor(id_vendedor,nombre,apellido,rut,telefono,correo,direccion,comuna,region) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);"
                         #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
                         #En la siguiente linea excecute nos permite ejecutar varias veces con distintos datos
             cursor.execute(consulta,
-                (cliente.id_cliente,
-                cliente.nombre,
-                cliente.apellido,
-                cliente.rut,
-                cliente.telefono,
-                cliente.correo,
-                cliente.direccion,
-                cliente.comuna,
-                cliente.region))
+                (vendedor.id_vendedor,
+                vendedor.nombre,
+                vendedor.apellido,
+                vendedor.rut,
+                vendedor.telefono,
+                vendedor.correo,
+                vendedor.direccion,
+                vendedor.comuna,
+                vendedor.region))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -41,13 +41,13 @@ def consultar():
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            cursor.execute("SELECT * FROM cliente")
+            cursor.execute("SELECT * FROM vendedor")
             #usamos fetchall para traer todos los datos
-            auxCliente = cursor.fetchall()
+            auxVendedor = cursor.fetchall()
             #recorrer la coleccion
-            for cli in auxCliente:
-                print(cli)
-            return auxCliente
+            for ven in auxVendedor:
+                print(ven)
+            return auxVendedor
     except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
         print("Ocurrio un error al consultar: ", e)
     conexion.close
@@ -57,39 +57,39 @@ def buscar(Rut):
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "SELECT * FROM cliente WHERE rut = %s;"
+            consulta = "SELECT * FROM vendedor WHERE rut = %s;"
             cursor.execute(consulta,(Rut))
             #usamos fetchall para traer todos los datos
-            auxCliente = cursor.fetchall()
+            auxVendedor = cursor.fetchall()
             #recorrer la coleccion
-            for cli in auxCliente:
-                print(cli)
-            return auxCliente
+            for ven in auxVendedor:
+                print(ven)
+            return auxVendedor
     except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
         print("Ocurrio un error al buscar: ", e)
     conexion.close
     #-----------------
-#actualizar cliente por id_cliente
-def actualizar(cliente):
+#actualizar vendedor por id_vendedor
+def actualizar(vendedor):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "UPDATE cliente SET nombre = %s, apellido = %s, rut = %s, telefono = %s, correo = %s, direccion = %s, comuna = %s, region = %s WHERE id_cliente = %s;"
+            consulta = "UPDATE vendedor SET nombre = %s, apellido = %s, rut = %s, telefono = %s, correo = %s, direccion = %s, comuna = %s, region = %s WHERE id_vendedor = %s;"
                         #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
                         #En la siguiente linea excecute nos permite ejecutar varias veces con distintos datos
             cursor.execute(consulta,
-                (cliente.nombre,
-                cliente.apellido,
-                cliente.rut,
-                cliente.telefono,
-                cliente.correo,
-                cliente.direccion,
-                cliente.comuna,
-                cliente.region,
-                cliente.id_cliente))
+                (vendedor.nombre,
+                vendedor.apellido,
+                vendedor.rut,
+                vendedor.telefono,
+                vendedor.correo,
+                vendedor.direccion,
+                vendedor.comuna,
+                vendedor.region,
+                vendedor.id_vendedor))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -102,7 +102,7 @@ def eliminar(Rut):
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "DELETE FROM cliente WHERE rut = %s;"
+            consulta = "DELETE FROM vendedor WHERE rut = %s;"
                         #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
@@ -118,9 +118,9 @@ def eliminar(Rut):
 #Programa principal
 #Prueba insertar OK
 #print("Conectado")
-#auxCliente = Cliente(0,"barbie","reyes","5555","91560522","jcubillos@tooldesign.cl","americo vespucio 7732","la florida","RM")
-#insertar(auxCliente)
-#consultar()
+auxvendedor = vendedor(0,"barbie","reyes","5555","91560522","jcubillos@tooldesign.cl","americo vespucio 7732","la florida","RM")
+insertar(auxvendedor)
+consulta()
 #print("Datos guardados")
 #---------------------------
 #Prueba Consultar OK
@@ -129,11 +129,11 @@ def eliminar(Rut):
 #Prueba buscar OK
 #buscar("11111")
 #--------------------------
-#Prueba actualizar cliente por rut OK 
-#auxCliente = Cliente(5,"barbara","reyes","5555","91560522","samanttta@tooldesign.cl","americo vespucio 7732","la florida","RM")
-#actualizar(auxCliente)
+#Prueba actualizar vendedor por rut OK 
+#auxvendedor = vendedor(5,"barbara","reyes","5555","91560522","samanttta@tooldesign.cl","americo vespucio 7732","la florida","RM")
+#actualizar(auxvendedor)
 #buscar("5555")
 #--------------------------
-#Prueba de eliminar cliente por id_cliente OK
+#Prueba de eliminar vendedor por id_vendedor OK
 #eliminar(666)
 #consultar()
