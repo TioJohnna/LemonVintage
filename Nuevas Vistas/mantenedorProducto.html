@@ -13,42 +13,67 @@
         </tr>
         <tr>
           <td align="right"><label for="rut">Id Producto:</label></td>
-          <td><input name="txtIdcliente" type="text" id="txtIdcliente" readonly="readonly" /></td>
+          <td><input name="txtIdproducto" type="text" id="txtIdproducto" /></td>
       </tr>
         <tr>
-          <td align="right"><label for="rut">Rut:</label></td>
-          <td><input type="text" name="txtRut" id="txtRut" /></td>
-        </tr>
-        <tr>
-          <td align="right"><label for="nombre">Nombre:</label></td>
+          <td align="right"><label for="rut">Nombre::</label></td>
           <td><input type="text" name="txtNombre" id="txtNombre" /></td>
         </tr>
         <tr>
-          <td align="right"><label for="apellido">Apellido:</label></td>
-          <td><input type="text" name="txtApellido" id="txtApellido" /></td>
-        </tr>    
-        <tr>
-          <td align="right"><label for="telefono">Teléfono:</label></td>
-          <td><input type="text" name="txtTelefono" id="txtTelefono" /></td>
-        </tr>              
-        <tr>
-          <td align="right"><label for="correo">Correo:</label></td>
-          <td><input type="text" name="txtCorreo" id="txtCorreo" /></td>
-        </tr>              
-        <tr>
-          <td align="right"><label for="direccion">Dirección:</label></td>
-          <td><input type="text" name="txtDireccion" id="txtDireccion" /></td>
-        </tr>              
-        <tr>
-          <td align="right"><label for="comuna">Comuna:</label></td>
-          <td><input type="text" name="txtComuna" id="txtComuna" /></td>
-        </tr>             
-        <tr>
-          <td align="right"><label for="region">Región:</label></td>
-          <td><input type="text" name="txtRegion" id="txtRegion" /></td>
+          <td align="right"><label for="nombre">Descripción::</label></td>
+          <td><textarea name="txtDescripcion" id="txtDescripcion"></textarea></td>
         </tr>
         <tr>
-          <td colspan="2"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
+          <td align="right"><label for="apellido">Color::</label></td>
+          <td><input type="text" name="txtColor" id="txtColor" /></td>
+        </tr>    
+        <tr>
+          <td align="right"><label for="telefono">Material:</label></td>
+          <td><input type="text" name="txtMaterial" id="txtMaterial" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="correo">Cantidad::</label></td>
+          <td><input type="text" name="txtCantidad" id="txtCantidad" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="direccion">Ancho::</label></td>
+          <td><input type="text" name="txtAncho" id="txtAncho" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="comuna">Alto::</label></td>
+          <td><input type="text" name="txtAlto" id="txtAlto" /></td>
+        </tr>             
+        <tr>
+          <td align="right">Espesor:</td>
+          <td><input type="text" name="txtEspesor" id="txtEspesor" /></td>
+        </tr>
+        <tr>
+          <td align="right">Peso:</td>
+          <td><input type="text" name="txtPeso" id="txtPeso" /></td>
+        </tr>
+        <tr>
+          <td align="right">Precio:</td>
+          <td><input type="text" name="txtPrecio" id="txtPrecio" /></td>
+        </tr>
+        <tr>
+          <td align="right">Divisiones:</td>
+          <td><input type="text" name="txtDivisiones" id="txtDivisiones" /></td>
+        </tr>
+        <tr>
+          <td align="right">Accesorios:</td>
+          <td><input type="text" name="txtAccesorios" id="txtAccesorios" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="region">Tipo de Producto:</label></td>
+          <td><label for="txtTipoproducto"></label>
+            <select name="txtTipoproducto" id="txtTipoproducto">
+              <option value="1">Ventana</option>
+              <option value="2">Puerta</option>
+              <option value="3">Espejo</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
           <input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar" />
           <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />          
           <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
@@ -67,28 +92,38 @@
   <thead>
   <tr>
     <td>ID</td>
-    <td>Rut</td>
     <td>Nombre</td>
-    <td>Apellido</td>
-    <td>Teléfono</td>
-    <td>Correo</td>
-    <td>Dirección</td>
-    <td>Comuna</td>
-    <td>Región</td>
+    <td>Descripcion</td>
+    <td>Color</td>
+    <td>Material</td>
+    <td>Cantidad</td>
+    <td>Ancho</td>
+    <td>Alto</td>
+    <td>Espesor</td>
+    <td>Peso</td>
+    <td>Precio</td>
+    <td>Divisiones</td>
+    <td>Accesorios</td>
+    <td>Tipo de Producto</td>
   </tr>
   </thead>
   <tbody>
-  {% for cli in clientes %}
+  {% for pro in productos %}
   <tr>
-    <td>{{cli.0}}</td>
-    <td>{{cli.1}}</td>
-    <td>{{cli.2}}</td>
-    <td>{{cli.3}}</td>
-    <td>{{cli.4}}</td>
-    <td>{{cli.5}}</td>
-    <td>{{cli.6}}</td>
-    <td>{{cli.7}}</td>
-    <td>{{cli.8}}</td>
+    <td>{{pro.0}}</td>
+    <td>{{pro.1}}</td>
+    <td>{{pro.2}}</td>
+    <td>{{pro.3}}</td>
+    <td>{{pro.4}}</td>
+    <td>{{pro.5}}</td>
+    <td>{{pro.6}}</td>
+    <td>{{pro.7}}</td>
+    <td>{{pro.8}}</td>
+    <td>{{pro.9}}</td>
+    <td>{{pro.10}}</td>
+    <td>{{pro.11}}</td>
+    <td>{{pro.12}}</td>
+    <td>{{pro.13}}</td>
   </tr>
   {% endfor %}
   </tbody>
