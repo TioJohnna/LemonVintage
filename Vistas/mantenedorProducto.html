@@ -13,39 +13,64 @@
         </tr>
         <tr>
           <td align="right"><label for="rut">Id Producto:</label></td>
-          <td><input name="txtIdcliente" type="text" id="txtIdcliente" readonly="readonly" /></td>
+          <td><input name="txtIdProducto" type="text" id="txtIdProducto" readonly="readonly" /></td>
       </tr>
         <tr>
-          <td align="right"><label for="rut">Rut:</label></td>
-          <td><input type="text" name="txtRut" id="txtRut" /></td>
-        </tr>
-        <tr>
-          <td align="right"><label for="nombre">Nombre:</label></td>
+          <td align="right"><label for="rut">Nombre:</label></td>
           <td><input type="text" name="txtNombre" id="txtNombre" /></td>
         </tr>
         <tr>
-          <td align="right"><label for="apellido">Apellido:</label></td>
-          <td><input type="text" name="txtApellido" id="txtApellido" /></td>
+          <td align="right"><label for="nombre">Descripcion:</label></td>
+          <td><input type="text" name="txtDescripcion" id="txtDescripcion" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="apellido">Color:</label></td>
+          <td><input type="text" name="txtColor" id="txtColor" /></td>
         </tr>    
         <tr>
-          <td align="right"><label for="telefono">Teléfono:</label></td>
-          <td><input type="text" name="txtTelefono" id="txtTelefono" /></td>
+          <td align="right"><label for="telefono">Material:</label></td>
+          <td><input type="text" name="txtMaterial" id="txtMaterial" /></td>
         </tr>              
         <tr>
-          <td align="right"><label for="correo">Correo:</label></td>
-          <td><input type="text" name="txtCorreo" id="txtCorreo" /></td>
+          <td align="right"><label for="correo">Cantidad:</label></td>
+          <td><input type="text" name="txtCantidad" id="txtCantidad" /></td>
         </tr>              
         <tr>
-          <td align="right"><label for="direccion">Dirección:</label></td>
-          <td><input type="text" name="txtDireccion" id="txtDireccion" /></td>
+          <td align="right"><label for="direccion">Ancho:</label></td>
+          <td><input type="text" name="txtAncho" id="txtAncho" /></td>
         </tr>              
         <tr>
-          <td align="right"><label for="comuna">Comuna:</label></td>
-          <td><input type="text" name="txtComuna" id="txtComuna" /></td>
+          <td align="right"><label for="comuna">Alto:</label></td>
+          <td><input type="text" name="txtAlto" id="txtAlto" /></td>
         </tr>             
         <tr>
-          <td align="right"><label for="region">Región:</label></td>
-          <td><input type="text" name="txtRegion" id="txtRegion" /></td>
+          <td align="right">Espesor:</td>
+          <td><input type="text" name="txtEspesor" id="txtEspesor" /></td>
+        </tr>
+        <tr>
+          <td align="right">Peso.:</td>
+          <td><input type="text" name="txtPeso" id="txtPeso" /></td>
+        </tr>
+        <tr>
+          <td align="right">Precio:</td>
+          <td><input type="text" name="txtPrecio" id="txtPrecio" /></td>
+        </tr>
+        <tr>
+          <td align="right">Divisiones:</td>
+          <td><input type="text" name="txtDivisiones" id="txtDivisiones" /></td>
+        </tr>
+        <tr>
+        <tr>
+          <td align="right">Accesorios:</td>
+          <td><input type="text" name="txtAccesorios" id="txtAccesorios" /></td>
+        </tr>
+          <td align="right"><label for="region">Tipo de Producto:</label></td>
+          <td><label for="txtTipoProducto"></label>
+            <select name="txtTipoProducto" id="txtTipoProducto">
+              <option value="1">Puerta</option>
+              <option value="2">Ventana</option>
+              <option value="3">Espejo</option>
+            </select></td>
         </tr>
         <tr>
           <td colspan="2"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
@@ -78,17 +103,17 @@
   </tr>
   </thead>
   <tbody>
-  {% for cli in clientes %}
+  {% for pro in productos %}
   <tr>
-    <td>{{cli.0}}</td>
-    <td>{{cli.1}}</td>
-    <td>{{cli.2}}</td>
-    <td>{{cli.3}}</td>
-    <td>{{cli.4}}</td>
-    <td>{{cli.5}}</td>
-    <td>{{cli.6}}</td>
-    <td>{{cli.7}}</td>
-    <td>{{cli.8}}</td>
+    <td>{{pro.0}}</td>
+    <td>{{pro.1}}</td>
+    <td>{{pro.2}}</td>
+    <td>{{pro.3}}</td>
+    <td>{{pro.4}}</td>
+    <td>{{pro.5}}</td>
+    <td>{{pro.6}}</td>
+    <td>{{pro.7}}</td>
+    <td>{{pro.8}}</td>
   </tr>
   {% endfor %}
   </tbody>

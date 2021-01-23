@@ -121,21 +121,96 @@
 
 <!--CONTENIDO-->  
 <div class="container" align="center" style="padding-bottom:50px">
-<h1 align="center">Mantenedor Vendedor </h1>
-<table width="600" border="1" align="center">
+<form id="form1" name="form1" method="post" action="" >
+    <table border="0px" align="center">
+        <tr>
+          <th colspan="2" scope="rowgroup"><h1>Mantenedor Vendedor</h1></th> 
+        </tr>
+        </tr>
+        <tr>
+          <td align="right"><label for="rut">Id Vendedor::</label></td>
+          <td><input name="txtIdvendedor" type="text" id="txtIdvendedor" readonly="readonly" /></td>
+      </tr>
+        <tr>
+          <td align="right"><label for="rut">Rut:</label></td>
+          <td><input type="text" name="txtRut" id="txtRut" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="nombre">Nombre:</label></td>
+          <td><input type="text" name="txtNombre" id="txtNombre" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="apellido">Apellido:</label></td>
+          <td><input type="text" name="txtApellido" id="txtApellido" /></td>
+        </tr>    
+        <tr>
+          <td align="right"><label for="telefono">Teléfono:</label></td>
+          <td><input type="text" name="txtTelefono" id="txtTelefono" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="correo">Correo:</label></td>
+          <td><input type="text" name="txtCorreo" id="txtCorreo" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="direccion">Dirección:</label></td>
+          <td><input type="text" name="txtDireccion" id="txtDireccion" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="comuna">Comuna:</label></td>
+          <td><input type="text" name="txtComuna" id="txtComuna" /></td>
+        </tr>             
+        <tr>
+          <td align="right"><label for="region">Región:</label></td>
+          <td><input type="text" name="txtRegion" id="txtRegion" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
+          <input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar" />
+          <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />          
+          <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> 
+              <input type="submit" name="btnPrimero" id="btnPrimero" value="<<" />
+              <input type="submit" name="btnAnterior" id="btnAnterior" value="<" />
+              <input name="txtIdcliente" type="text" id="txtIdcliente" size="4" readonly="readonly" />
+              <input type="submit" name="btnSiguiente" id="btnSiguiente" value=">" />          
+              <input type="reset" name="btnUltimo" id="btnUltimo" value=">>" />
+          </td>
+      </tr>
+    </table>
+    <table width="100%" border="1" align="center">
+  <thead>
   <tr>
+    <td>ID</td>
     <td>Rut</td>
     <td>Nombre</td>
-    <td>Acciones</td>
+    <td>Apellido</td>
+    <td>Teléfono</td>
+    <td>Correo</td>
+    <td>Dirección</td>
+    <td>Comuna</td>
+    <td>Región</td>
   </tr>
+  </thead>
+  <tbody>
+  {% for ven in vendedores %}
   <tr>
-    <td>11223344-5</td>
-    <td>Juan Perez</td>
-    <td><input type="submit" name="editar" id="editar" value="Modificar" />
-    <input type="submit" name="eliminar" id="eliminar" value="Eliminar" /></td>
+    <td>{{ven.0}}</td>
+    <td>{{ven.1}}</td>
+    <td>{{ven.2}}</td>
+    <td>{{ven.3}}</td>
+    <td>{{ven.4}}</td>
+    <td>{{ven.5}}</td>
+    <td>{{ven.6}}</td>
+    <td>{{ven.7}}</td>
+    <td>{{ven.8}}</td>
   </tr>
+  {% endfor %}
+  </tbody>
 </table>
-<div style="text-align:center"><a href="registroVendedor.html"><input name="agregar" type="button" value="Agregar Vendedor" /></a></div>
+
+    </form>
 </div>
 <!--FIN CONTENIDO-->
 
@@ -244,5 +319,3 @@
 
 </body>
 </html>
-
-

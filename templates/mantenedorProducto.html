@@ -120,30 +120,122 @@
   </section><!-- End Hero -->
 
 <!--CONTENIDO-->  
-<div class="container" style="padding-bottom:50px">
-<h1 align="center">Mantenedor Productos </h1>
-<table width="100%" border="1" align="center">
+<div class="container" align="center" style="padding-bottom:50px">
+<form id="form1" name="form1" method="post" action="" >
+    <table border="0px" align="center">
+        <tr>
+          <th colspan="2" scope="rowgroup"><h1>Mantenedor Producto</h1></th> 
+        </tr>
+        </tr>
+        <tr>
+          <td align="right"><label for="rut">Id Producto:</label></td>
+          <td><input name="txtIdProducto" type="text" id="txtIdProducto" readonly="readonly" /></td>
+      </tr>
+        <tr>
+          <td align="right"><label for="rut">Nombre:</label></td>
+          <td><input type="text" name="txtNombre" id="txtNombre" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="nombre">Descripcion:</label></td>
+          <td><input type="text" name="txtDescripcion" id="txtDescripcion" /></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="apellido">Color:</label></td>
+          <td><input type="text" name="txtColor" id="txtColor" /></td>
+        </tr>    
+        <tr>
+          <td align="right"><label for="telefono">Material:</label></td>
+          <td><input type="text" name="txtMaterial" id="txtMaterial" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="correo">Cantidad:</label></td>
+          <td><input type="text" name="txtCantidad" id="txtCantidad" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="direccion">Ancho:</label></td>
+          <td><input type="text" name="txtAncho" id="txtAncho" /></td>
+        </tr>              
+        <tr>
+          <td align="right"><label for="comuna">Alto:</label></td>
+          <td><input type="text" name="txtAlto" id="txtAlto" /></td>
+        </tr>             
+        <tr>
+          <td align="right">Espesor:</td>
+          <td><input type="text" name="txtEspesor" id="txtEspesor" /></td>
+        </tr>
+        <tr>
+          <td align="right">Peso.:</td>
+          <td><input type="text" name="txtPeso" id="txtPeso" /></td>
+        </tr>
+        <tr>
+          <td align="right">Precio:</td>
+          <td><input type="text" name="txtPrecio" id="txtPrecio" /></td>
+        </tr>
+        <tr>
+          <td align="right">Divisiones:</td>
+          <td><input type="text" name="txtDivisiones" id="txtDivisiones" /></td>
+        </tr>
+        <tr>
+        <tr>
+          <td align="right">Accesorios:</td>
+          <td><input type="text" name="txtAccesorios" id="txtAccesorios" /></td>
+        </tr>
+          <td align="right"><label for="region">Tipo de Producto:</label></td>
+          <td><label for="txtTipoProducto"></label>
+            <select name="txtTipoProducto" id="txtTipoProducto">
+              <option value="1">Puerta</option>
+              <option value="2">Ventana</option>
+              <option value="3">Espejo</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td colspan="2"> <input type="submit" name="btnRegistrar" id="btnRegistrar" value="Registrar" />
+          <input type="submit" name="btnActualizar" id="btnActualizar" value="Actualizar" />
+          <input type="submit" name="btnEliminar" id="btnEliminar" value="Eliminar" />          
+          <input type="reset" name="restablecer" id="restablecer" value="Restablecer" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"> 
+              <input type="submit" name="btnPrimero" id="btnPrimero" value="<<" />
+              <input type="submit" name="btnAnterior" id="btnAnterior" value="<" />
+              <input name="txtIdcliente" type="text" id="txtIdcliente" size="4" readonly="readonly" />
+              <input type="submit" name="btnSiguiente" id="btnSiguiente" value=">" />          
+              <input type="reset" name="btnUltimo" id="btnUltimo" value=">>" />
+          </td>
+      </tr>
+    </table>
+    <table width="100%" border="1" align="center">
+  <thead>
   <tr>
-    <td>Producto</td>
-    <td>Descripción</td>
-    <td>Alto</td>
-    <td>Ancho</td>
-    <td>Color</td>
-    <td>Precio</td>
-    <td>Acciones</td>
+    <td>ID</td>
+    <td>Rut</td>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Teléfono</td>
+    <td>Correo</td>
+    <td>Dirección</td>
+    <td>Comuna</td>
+    <td>Región</td>
   </tr>
+  </thead>
+  <tbody>
+  {% for pro in productos %}
   <tr>
-    <td>Ventana Espejo</td>
-    <td>Ventana antigua decapada con espejo</td>
-    <td>90</td>
-    <td>120</td>
-    <td>Amarillo</td>
-    <td>$50.000</td>
-    <td><input type="submit" name="editar" id="editar" value="Modificar" />
-    <input type="submit" name="eliminar" id="eliminar" value="Eliminar" /></td>
+    <td>{{pro.0}}</td>
+    <td>{{pro.1}}</td>
+    <td>{{pro.2}}</td>
+    <td>{{pro.3}}</td>
+    <td>{{pro.4}}</td>
+    <td>{{pro.5}}</td>
+    <td>{{pro.6}}</td>
+    <td>{{pro.7}}</td>
+    <td>{{pro.8}}</td>
   </tr>
+  {% endfor %}
+  </tbody>
 </table>
-<div style="text-align:center"><a href="registroProducto.html"><input name="agregar" type="button" value="Agregar Producto" /></a></div>
+
+    </form>
 </div>
 <!--FIN CONTENIDO-->
 
