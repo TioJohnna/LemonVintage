@@ -36,9 +36,9 @@ def MantenedorCliente():
 @app.route('/CRUDCliente',methods=['POST']) 
 def CRUDCliente():
     if request.method == 'POST':
+        #CREATE
         try:
             auxBotonRegistrar = request.form['btnRegistrar']
-            #CREATE
             if auxBotonRegistrar == 'Registrar':
                 auxRut = request.form['txtRut']
                 auxNombe = request.form['txtNombre']
@@ -55,10 +55,10 @@ def CRUDCliente():
         except:
             print("Datos no guardados")
             #flash("Datos no guardados")
-            #FIN CREATE
+        #FIN CREATE
+        #UPDATE
         try:
             auxBotonActualizar = request.form['btnActualizar']
-            #CREATE
             if auxBotonActualizar == 'Actualizar':
                 auxIdcliente = request.form['txtIdcliente']
                 auxRut = request.form['txtRut']
@@ -71,15 +71,28 @@ def CRUDCliente():
                 auxRegion = request.form['txtRegion']
                 auxCliente = claseCliente.Cliente(auxIdcliente,auxNombe,auxApellido,auxRut,auxTelefono,auxCorreo,auxDireccion,auxComuna,auxRegion)
                 mantenedorCliente.actualizar(auxCliente)
-                print("Datos guardados")
-                #flash("Datos Guardados")
+                print("Datos Actualizados")
+                #flash("Datos Actualizados")
         except:
-            print("Datos no guardados")
-            #flash("Datos no guardados")
-            #FIN CREATE
+            print("Datos no Actualizados")
+            #flash("Datos no Actualizados")
+        #FIN UPDATE
+        #ELIMINAR
+        try:
+            auxBotonEliminar = request.form['btnEliminar']
+            if auxBotonEliminar == 'Eliminar':
+                auxRut = request.form['txtRut']
+                mantenedorCliente.eliminar(auxRut)
+                print("Datos Eliminados")
+                #flash("Datos Eliminados")
+        except:
+            print("Datos no se han podido Eliminar")
+            #flash("Datos no se han podido Eliminar")
+        #FIN ELIMINAR
+
         #es necesario redireccionar para que no se caiga luego de insertar
         return redirect(url_for('MantenedorCliente'))
-#----------------------------Fin registrar datos-------------
+#----------------------------Fin CRUD Cliente-------------
 
 #Renderizar pagina mantenedorVendedor
 @app.route('/MantenedorVendedor')

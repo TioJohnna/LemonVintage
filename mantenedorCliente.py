@@ -75,7 +75,7 @@ def actualizar(cliente):
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "UPDATE cliente SET nombre = %s, apellido = %s, rut = %s, telefono = %s, correo = %s, direccion = %s, comuna = %s, region = %s WHERE id_cliente = %s;"
+            consulta = "UPDATE cliente SET nombre = %s, apellido = %s, rut = %s, telefono = %s, correo = %s, direccion = %s, comuna = %s, region = %s WHERE rut = %s;"
                         #%s hace referencia a una variable string
                         #%d hace referencia a un int
                         #%f hace referencia a un float
@@ -89,7 +89,7 @@ def actualizar(cliente):
                 cliente.direccion,
                 cliente.comuna,
                 cliente.region,
-                cliente.id_cliente))
+                cliente.rut))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
