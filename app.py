@@ -1,16 +1,88 @@
-#importar controlador
+#importar controladores
 import mantenedorCliente
-#importar modelo
+import mantenedorVendedor
+import mantenedorServicio
+import mantenedorProducto
+import mantenedorTipoProducto
+#importar modelos
 import claseCliente
+import claseVendedor
+import claseServicio
+import claseProducto
+import claseTipoProducto
+#importar flask y las librerias a ocupar
 from flask import Flask,render_template,request,flash,redirect,url_for
 
 app = Flask(__name__)
 #Programa Principal de Arranque
 #Rutear el home (la raiz del sitio)
-@app.route('/')
 
+#renderiza la pagina principal
+@app.route('/')
 def Index():
     return render_template('Index.html')
+
+#para redireccionar las otras paginas es necesario agregar como ruta el nombre de la funcion 
+#y renderizar cada pagina
+#Renderizar pagina mantenedorCliente.html
+@app.route('/MantenedorCliente')
+def MantenedorCliente():
+    datos = mantenedorCliente.consultar()
+    #renderiza el template y al mismo rescata la consulta de la db con los datos para mostrar en la grilla
+    return render_template('mantenedorCliente.html',clientes=datos)
+
+#Es necesario cambiar el nombre del route para las acciones del mantenedor
+# El action del form debe ir apuntando a este route
+@app.route('/CRUDCliente',methods=['POST']) 
+def ingresarCliente():
+    if request.method == 'POST':
+        try:
+            auxBotonRegistrar = request.form['btnRegistrar']
+            #CREATE
+            if auxBotonRegistrar == 'Registrar':
+                auxRut = request.form['txtRut']
+                auxNombe = request.form['txtNombre']
+                auxApellido = request.form['txtApellido']
+                auxTelefono = request.form['txtTelefono']
+                auxCorreo = request.form['txtCorreo']
+                auxDireccion = request.form['txtDireccion']
+                auxComuna = request.form['txtComuna']
+                auxRegion = request.form['txtRegion']
+                auxCliente = claseCliente.Cliente(0,auxNombe,auxApellido,auxRut,auxTelefono,auxCorreo,auxDireccion,auxComuna,auxRegion)
+                mantenedorCliente.insertar(auxCliente)
+                print("Datos guardados")
+                #flash("Datos Guardados")
+        except:
+            print("Datos no guardados")
+            #flash("Datos no guardados")
+        #es necesario redireccionar para que no se caiga luego de insertar
+        return redirect(url_for('MantenedorCliente'))
+#----------------------------Fin registrar datos-------------
+
+#Renderizar pagina mantenedorVendedor
+@app.route('/MantenedorVendedor')
+def MantenedorVendedor():
+    datos = mantenedorVendedor.consultar()
+    return render_template('mantenedorVendedor.html',vendedor=datos)
+
+#Renderizar pagina mantenedorProducto
+@app.route('/MantenedorProducto')
+def MantenedorProducto():
+    datos = mantenedorProducto.consultar()
+    return render_template('mantenedorProducto.html',producto=datos)
+
+#Renderizar pagina mantenedorServicio
+@app.route('/MantenedorServicio')
+def MantenedorServicio():
+    datos = mantenedorServicio.consultar()
+    return render_template('mantenedorServicio.html',servicio=datos)
+
+#Renderizar pagina mantenedorTipoProducto
+@app.route('/MantenedorTipoProducto')
+def MantenedorTipoProducto():
+    datos = mantenedorTipoProducto.consultar()
+    return render_template('mantenedorTipoProducto.html',tipoproducto=datos)
+
 
 #--------------configurar registroCliente como inicio
 #def Index():
@@ -28,32 +100,31 @@ def Index():
 #route de la accion del formulario y agregar el metodo del formulario
 #metodo post esconde los datos
 #metodo get muestra los datos
-# @app.route('/ingresarCliente',methods=['POST'])
 
-# def ingresarCliente():
-#     if request.method == 'POST':
-#         #CREATE
-#         try:
-#             auxBotonRegistrar = request.form['btnRegistrar']
-#             if auxBotonRegistrar == 'Registrar':
-#                 auxRut = request.form['txtRut']
-#                 auxNombe = request.form['txtNombre']
-#                 auxApellido = request.form['txtApellido']
-#                 auxTelefono = request.form['txtTelefono']
-#                 auxCorreo = request.form['txtCorreo']
-#                 auxDireccion = request.form['txtDireccion']
-#                 auxComuna = request.form['txtComuna']
-#                 auxRegion = request.form['txtRegion']
-#                 auxCliente = claseCliente.Cliente(0,auxNombe,auxApellido,auxRut,auxTelefono,auxCorreo,auxDireccion,auxComuna,auxRegion)
-#                 mantenedorCliente.insertar(auxCliente)
-#                 print("Datos guardados")
-#                 #flash("Datos Guardados")
-
-#         except:
-#             print("Datos no guardados")
-#             #flash("Datos no guardados")
-#         #es necesario redireccionar para que no se caiga luego de insertar
-#         return redirect(url_for('Index'))
+#@app.route('/MantenedorCliente',methods=['POST'])
+#def ingresarCliente():
+#    if request.method == 'POST':
+#        #CREATE
+#        try:
+#            auxBotonRegistrar = request.form['btnRegistrar']
+#            if auxBotonRegistrar == 'Registrar':
+#                auxRut = request.form['txtRut']
+#                auxNombe = request.form['txtNombre']
+#                auxApellido = request.form['txtApellido']
+#                auxTelefono = request.form['txtTelefono']
+#                auxCorreo = request.form['txtCorreo']
+#                auxDireccion = request.form['txtDireccion']
+#                auxComuna = request.form['txtComuna']
+#                auxRegion = request.form['txtRegion']
+#                auxCliente = claseCliente.Cliente(0,auxNombe,auxApellido,auxRut,auxTelefono,auxCorreo,auxDireccion,auxComuna,auxRegion)
+#                mantenedorCliente.insertar(auxCliente)
+#                print("Datos guardados")
+#                #flash("Datos Guardados")
+#        except:
+#            print("Datos no guardados")
+#            #flash("Datos no guardados")
+#        #es necesario redireccionar para que no se caiga luego de insertar
+#        return redirect(url_for('MantenedorCliente'))
 #----------------------------Fin registrar datos-------------
 
 if __name__ == '__main__':
