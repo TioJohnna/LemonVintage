@@ -130,9 +130,9 @@ def eliminar(Rut):
 #buscar("11111")
 #--------------------------
 #Prueba actualizar cliente por rut OK 
-#auxCliente = Cliente(5,"barbara","reyes","5555","91560522","samanttta@tooldesign.cl","americo vespucio 7732","la florida","RM")
+#auxCliente = Cliente(8,"johnny","walker","167255280","91560522","johnny@tooldesign.cl","americo vespucio 7732","la florida","RM")
 #actualizar(auxCliente)
-#buscar("5555")
+#consultar()
 #--------------------------
 #Prueba de eliminar cliente por id_cliente OK
 #eliminar(666)

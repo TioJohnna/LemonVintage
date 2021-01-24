@@ -34,7 +34,7 @@ def MantenedorCliente():
 #Es necesario cambiar el nombre del route para las acciones del mantenedor
 # El action del form debe ir apuntando a este route
 @app.route('/CRUDCliente',methods=['POST']) 
-def ingresarCliente():
+def CRUDCliente():
     if request.method == 'POST':
         try:
             auxBotonRegistrar = request.form['btnRegistrar']
@@ -55,6 +55,28 @@ def ingresarCliente():
         except:
             print("Datos no guardados")
             #flash("Datos no guardados")
+            #FIN CREATE
+        try:
+            auxBotonActualizar = request.form['btnActualizar']
+            #CREATE
+            if auxBotonActualizar == 'Actualizar':
+                auxIdcliente = request.form['txtIdcliente']
+                auxRut = request.form['txtRut']
+                auxNombe = request.form['txtNombre']
+                auxApellido = request.form['txtApellido']
+                auxTelefono = request.form['txtTelefono']
+                auxCorreo = request.form['txtCorreo']
+                auxDireccion = request.form['txtDireccion']
+                auxComuna = request.form['txtComuna']
+                auxRegion = request.form['txtRegion']
+                auxCliente = claseCliente.Cliente(auxIdcliente,auxNombe,auxApellido,auxRut,auxTelefono,auxCorreo,auxDireccion,auxComuna,auxRegion)
+                mantenedorCliente.actualizar(auxCliente)
+                print("Datos guardados")
+                #flash("Datos Guardados")
+        except:
+            print("Datos no guardados")
+            #flash("Datos no guardados")
+            #FIN CREATE
         #es necesario redireccionar para que no se caiga luego de insertar
         return redirect(url_for('MantenedorCliente'))
 #----------------------------Fin registrar datos-------------

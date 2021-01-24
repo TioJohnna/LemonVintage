@@ -129,7 +129,7 @@
         </tr>
         <tr>
           <td align="right"><label for="rut">Id Cliente:</label></td>
-          <td><input name="txtIdcliente" type="text" id="txtIdcliente" readonly="readonly" /></td>
+          <td><input name="txtIdcliente" type="text" id="txtIdcliente"/></td>
       </tr>
         <tr>
           <td align="right"><label for="rut">Rut:</label></td>
@@ -197,9 +197,9 @@
   {% for cli in clientes %}
   <tr>
     <td>{{cli.0}}</td>
+    <td>{{cli.3}}</td>
     <td>{{cli.1}}</td>
     <td>{{cli.2}}</td>
-    <td>{{cli.3}}</td>
     <td>{{cli.4}}</td>
     <td>{{cli.5}}</td>
     <td>{{cli.6}}</td>
