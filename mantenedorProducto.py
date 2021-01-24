@@ -128,7 +128,7 @@ def eliminar(Id_producto):
 #Programa principal
 #Prueba insertar OK
 #print("Conectado")
-#auxProducto = Producto(0,"puerta 666","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",1)
+#auxProducto = Producto(0,"puerta 333","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",2)
 #insertar(auxProducto)
 #consultar()
 #print("Datos guardados")
@@ -140,10 +140,9 @@ def eliminar(Id_producto):
 #buscar(1)
 #--------------------------
 #Prueba actualizar producto por id producto OK 
-#auxProducto = Producto(2,"SUPER puerta 666","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",1)
+#auxProducto = Producto(0,"SUPER puerta 777","puerta roble","natural","roble",4,90,235.5,4.5,50,90000,2,"españoleta",3)
 #actualizar(auxProducto)
 #consultar()
-#buscar("5555")
 #--------------------------
 #Prueba de eliminar producto por id producto OK
 #eliminar(2)
