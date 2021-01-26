@@ -1,6 +1,6 @@
-class claseDetalleBoleta:
-    def __init__(self,id_detalleBoleta,detalle,total,boleta_id_boleta,producto_id_producto,servicio_id_servicio):
-        self.id_detalleBoleta = id_detalleBoleta
+class DetalleBoleta:
+    def __init__(self,id_detallboleta,detalle,total,boleta_id_boleta,producto_id_producto,servicio_id_servicio):
+        self.id_detalleboleta = id_detallboleta
         self.detalle = detalle
         self.total  = total
         self.boleta_id_boleta = boleta_id_boleta

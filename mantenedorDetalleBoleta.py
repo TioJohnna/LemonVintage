@@ -1,6 +1,5 @@
-import datetime
 import pymysql
-from claseAbono import Abono
+from claseDetalleBoleta import DetalleBoleta
 #Conexion a la base de datos
 def conectar():
     try:
@@ -11,21 +10,19 @@ def conectar():
     return conexion
     
 
-def insertar(abono):
+def insertar(detalle_boleta):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "INSERT INTO abono(id_abono,monto,fecha,db_id_detalleboleta) VALUES (%s,%s,%s,%s);"
-                        #%s hace referencia a una variable string
-                        #%d hace referencia a un int
-                        #%f hace referencia a un float
-                        #En la siguiente linea excecute nos permite ejecutar varias veces con distintos datos
+            consulta = "INSERT INTO detalle_boleta(id_detalleboleta,detalle,total,boleta_id_boleta,producto_id_producto,servicio_id_servicio) VALUES (%s,%s,%s,%s,%s,%s);"
             cursor.execute(consulta,
-                (abono.id_abono,
-                abono.monto,
-                abono.fecha, 
-                abono.db_id_detalleboleta))
+                (detalle_boleta.id_detalleboleta,
+                detalle_boleta.detalle,
+                detalle_boleta.total, 
+                detalle_boleta.boleta_id_boleta,
+                detalle_boleta.producto_id_producto,
+                detalle_boleta.servicio_id_servicio))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -37,46 +34,48 @@ def consultar():
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            cursor.execute("SELECT * FROM abono")
+            cursor.execute("SELECT * FROM detalle_boleta")
             #usamos fetchall para traer todos los datos
-            auxAbono = cursor.fetchall()
+            auxDetalleboleta = cursor.fetchall()
             #recorrer la coleccion
-            for abo in auxAbono:
-                print(abo)
-            return auxAbono
+            for detbol in auxDetalleboleta:
+                print(detbol)
+            return auxDetalleboleta
     except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
         print("Ocurrio un error al consultar: ", e)
     conexion.close
     #-----------------
-def buscar(id_abono):
+def buscar(id_detalleboleta):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "SELECT * FROM abono WHERE id_abono = %s;"
-            cursor.execute(consulta,(id_abono))
+            consulta = "SELECT * FROM detalle_boleta WHERE id_detalleboleta = %s;"
+            cursor.execute(consulta,(id_detalleboleta))
             #usamos fetchall para traer todos los datos
-            auxAbono = cursor.fetchall()
+            auxDetalleboleta = cursor.fetchall()
             #recorrer la coleccion
-            for abo in auxAbono:
-                print(abo)
-            return auxAbono
+            for detbol in auxDetalleboleta:
+                print(detbol)
+            return auxDetalleboleta
     except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
         print("Ocurrio un error al buscar: ", e)
     conexion.close
     #-----------------
 #actualizar servicio por id_servicio
-def actualizar(abono):
+def actualizar(Detalle_boleta):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "UPDATE abono SET monto = %s, fecha = %s, db_id_detalleboleta = %s WHERE id_abono = %s;"
+            consulta = "UPDATE detalle_boleta SET detalle = %s, total = %s, boleta_id_boleta = %s, producto_id_producto = %s, servicio_id_servicio = %s WHERE id_detalleboleta = %s;"
             cursor.execute(consulta,
-                (abono.monto,
-                abono.fecha,
-                abono.db_id_detalleboleta,
-                abono.id_abono))
+                (Detalle_boleta.detalle,
+                Detalle_boleta.total,
+                Detalle_boleta.boleta_id_boleta,
+                Detalle_boleta.producto_id_producto,
+                Detalle_boleta.servicio_id_servicio,
+                Detalle_boleta.id_detalleboleta))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -84,13 +83,13 @@ def actualizar(abono):
         print("Error al actualizar datos ", ex)
     conexion.close
     #-----------------
-def eliminar(id_abono):
+def eliminar(id_detalleboleta):
     conectar()
     conexion = conectar()
     try:
         with conexion.cursor() as cursor:
-            consulta = "DELETE FROM abono WHERE id_abono = %s;"
-            cursor.execute(consulta,(id_abono))
+            consulta = "DELETE FROM detalle_boleta WHERE id_detalleboleta = %s;"
+            cursor.execute(consulta,(id_detalleboleta))
     #commit para que ejecute la consulta y almacene
         conexion.commit
     #rescatamos el error operacional y el error interno para luego guardar en ex
@@ -101,8 +100,8 @@ def eliminar(id_abono):
 #Programa principal TESTER
 #Prueba insertar OK
 #print("Conectado")
-#auxAbono= Abono(0,10000,'2021-01-26',0)
-#insertar(auxAbono)
+#auxDetalleboleta= DetalleBoleta(0,"producto 2 10000 \b producto 4 30000",40000,4,4,4)
+#insertar(auxDetalleboleta)
 #consultar()
 #print("Datos guardados")
 #---------------------------
@@ -110,11 +109,11 @@ def eliminar(id_abono):
 #consultar()
 #--------------------------
 #Prueba buscar OK
-#buscar(1)
+#buscar(4)
 #--------------------------
 #Prueba actualizar id  OK 
-#auxAbono = Abono(1,777,"2021-04-06",7)
-#actualizar(auxAbono)
+#auxDetalleboleta = DetalleBoleta(4,"producto 666",666,6,6,6)
+#actualizar(auxDetalleboleta)
 #consultar()
 #--------------------------
 #Prueba de eliminar servicio por id servicio OK
