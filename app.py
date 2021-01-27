@@ -358,11 +358,24 @@ def CRUDTipoProducto():
 #--FIN RENDER MANTENEDORES
 
 #--RENDER TRANSACCIONES
-#Renderizar pagina mantenedorProducto
+#Renderizar pagina Ventas
 @app.route('/Ventas')
 def Ventas():
     datos = mantenedorProducto.consultar()
     return render_template('ventaProductoServicio.html',ventas=datos)
+
+#Renderizar pagina Cotizaciones
+@app.route('/Cotizaciones')
+def Cotizaciones():
+    datos = mantenedorProducto.consultar()
+    return render_template('cotizarProductoServicio.html',ventas=datos)
+
+#Renderizar pagina Cotizaciones
+@app.route('/Abonos')
+def Abonos():
+    datos = mantenedorProducto.consultar()
+    return render_template('abonarProductoServicio.html',ventas=datos)
+
 
 
 #--CONFIG PPORT AND RUN DEBUG--

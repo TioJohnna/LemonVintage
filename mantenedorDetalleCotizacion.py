@@ -117,5 +117,5 @@ def eliminar(id_detallecotizacion):
 #consultar()
 #--------------------------
 #Prueba de eliminar servicio por id servicio OK
-eliminar(3)
-consultar()
+#eliminar(3)
+#consultar()
