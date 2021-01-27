@@ -360,7 +360,7 @@ def CRUDTipoProducto():
 #--RENDER TRANSACCIONES
 #Renderizar pagina mantenedorProducto
 @app.route('/Ventas')
-def MantenedorProducto():
+def Ventas():
     datos = mantenedorProducto.consultar()
     return render_template('ventaProductoServicio.html',ventas=datos)
 
