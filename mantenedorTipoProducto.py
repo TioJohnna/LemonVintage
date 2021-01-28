@@ -112,7 +112,7 @@ def eliminar(Id_tipo_producto):
 #print("Datos guardados")
 #---------------------------
 #Prueba Consultar OK
-#consultar()
+#onsultar()
 #--------------------------
 #Prueba buscar id tipo_producto OK
 #buscar(1)

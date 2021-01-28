@@ -371,8 +371,29 @@ def CRUDTipoProducto():
 #Renderizar pagina Ventas
 @app.route('/Ventas')
 def Ventas():
-    datos = mantenedorProducto.consultar()
-    return render_template('ventaProductoServicio.html',ventas=datos)
+    datosClientes = mantenedorCliente.consultar()
+    datosVendedores = mantenedorVendedor.consultar()
+    datosProductos = mantenedorProducto.consultar()
+    return render_template('ventaProductoServicio.html',clientes=datosClientes,vendedores=datosVendedores,productos=datosProductos)
+@app.route('/Comprar',methods=['POST'])
+def Comprar():
+    if request.method == 'POST':
+        try:
+            auxBtnComprar = request.form['btnComprar']
+            if auxBtnComprar == 'Comprar':
+                auxFechaBoleta=date.today()
+                auxIdCliente=request.form['txtId_cliente']
+                auxIdVendedor=request.form['txtId_vendedor']
+                auxBoleta=claseBoleta.Boleta(0,auxFechaBoleta,auxIdCliente,auxIdVendedor)
+                mantenedorBoleta.insertar(auxBoleta)
+                #auxDetalle = request.form.getlist["ProductosComprados"]
+                auxTotal = request.form['txtTotal']
+                auxDetalleBoleta=claseDetalleBoleta.DetalleBoleta(0,"HOLIWI",666,1,1,1)
+                mantenedorDetalleBoleta.insertar(auxDetalleBoleta)
+        except:
+            print("Compra no realizada")
+            #flash("Compra no realizada")
+        return redirect(url_for('Ventas'))
 
 #Renderizar pagina Cotizaciones
 @app.route('/Cotizaciones')
