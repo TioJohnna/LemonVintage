@@ -386,9 +386,9 @@ def Comprar():
                 auxIdVendedor=request.form['txtId_vendedor']
                 auxBoleta=claseBoleta.Boleta(0,auxFechaBoleta,auxIdCliente,auxIdVendedor)
                 mantenedorBoleta.insertar(auxBoleta)
-                #auxDetalle = request.form.getlist["ProductosComprados"]
-                auxTotal = request.form['txtTotal']
-                auxDetalleBoleta=claseDetalleBoleta.DetalleBoleta(0,"HOLIWI",666,1,1,1)
+                auxDetalle = request.form['txtDetalle']
+                auxTotal= request.form['txtTotal']
+                auxDetalleBoleta=claseDetalleBoleta.DetalleBoleta(0,auxDetalle,auxTotal,1,1,1)
                 mantenedorDetalleBoleta.insertar(auxDetalleBoleta)
         except:
             print("Compra no realizada")

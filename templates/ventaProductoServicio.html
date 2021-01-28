@@ -149,32 +149,35 @@
       </h3>
       <table width="600" border="1" align="center">
         <tr>
+          <td>Id Producto</td>
           <td>Producto</td>
           <td>Ancho</td>
           <td>Alto</td>
           <td>Color</td>
           <td>Precio</td>
-          <td>Seleccionar</td>
         </tr>
         {% for pro in productos%}
           <tr>
+            <td>{{pro.0}}</td>
             <td>{{ pro.1 }}</td>
             <td>{{ pro.6 }}</td>
             <td>{{ pro.7 }}</td>
             <td>{{ pro.3 }}</td>
             <!--dar formato sin decimales-->
             <td>${{ '%.0f' | format(pro.10)  }}</td>
-            <td>
-              <input type="checkbox" name="ProductosComprados" value="{{pro.1}}"/></label>
-            </td>
           </tr>
         {% endfor %}
       </table>
   </fieldset>
   <fieldset>
+    <label for="txtTotal">Detalle Compra: </label>
+    <textarea name="txtDetalle" id="txtDetalle" cols="20%" rows="3" /></textarea>
+  </fieldset>
+  <fieldset>
     <legend>
       <h3>Total</h3>
     </legend>
+    <label for="txtTotal">Total: </label>
     <input type="text" name="txtTotal" id="txtTotal" />
   </fieldset>
   <fieldset>
