@@ -18,8 +18,7 @@ CREATE TABLE boleta (
     id_boleta              INTEGER NOT NULL,
     fecha                  DATE NOT NULL,
     cliente_id_cliente     INTEGER NOT NULL,
-    vendedor_id_vendedor   INTEGER NOT NULL,
-    abono FLOAT
+    vendedor_id_vendedor   INTEGER NOT NULL
 );
 
 ALTER TABLE boleta ADD CONSTRAINT boleta_pk PRIMARY KEY ( id_boleta ) ;
@@ -135,7 +134,8 @@ CREATE TABLE vendedor (
     telefono      VARCHAR(20),
     correo        VARCHAR(50),
     direccion     VARCHAR(50),
-    comuna        VARCHAR(50)
+    comuna        VARCHAR(50),
+    region       VARCHAR(50)
 );
 
 ALTER TABLE vendedor ADD CONSTRAINT vendedor_pk PRIMARY KEY ( id_vendedor ) ;

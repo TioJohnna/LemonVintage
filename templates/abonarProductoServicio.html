@@ -122,47 +122,56 @@
   </section><!-- End Hero -->
 
 <!--CONTENIDO-->  
+<!--Mostrar vendedores -->
+<!--<form id="form1" name="form1" method="post" action="" style="text-align:center">-->
 <div class="container" style="margin-bottom:50px">
-<form id="form1" name="form1" method="post" action="" style="text-align:center">
-<fieldset>
+<form id="form1" name="form1" method="post" action="/Abonar" style="text-align:center">
+  <fieldset>
     <legend align="center"><h3>Vendedor</h3></legend>
-	<p>
-      <label for="rut_vendedor">Rut Vendedor:</label>
-      <input type="text" name="rut_vendedor" id="rut_vendedor" />
-      <label for="nombre">Nombre Vendedor:</label>
-      <input name="nombre" type="text" id="nombre" readonly="readonly" />
-      <input type="submit" name="buscar_vendedor" id="buscar_vendedor" value="Buscar" />
-  </p>
+    <select name="txtId_vendedor" id="txtId_vendedor">
+      <option disabled="disabled" selected="true">Seleccionar Vendedor</option>
+      {% for ven in vendedores %}
+      <option value="{{ven.0}}">{{"ID VENDEDOR: "+ ven.0 | string() + " VENDEDOR: " + ven.2 + " " + ven.3}}</option>
+      {% endfor %}
+    </select>
   </fieldset>
   <fieldset>
-        <legend align="center"><h3>Cliente</h3></legend>
-      <p>
-        <label for="rut_cliente">Rut Cliente:</label>
-        <input type="text" name="rut_cliente" id="rut_cliente" />
-        <label for="nombre_cliente">Nombre Cliente:</label>
-        <input name="nombre_cliente" type="text" id="nombre_cliente" readonly="readonly" />
-        <input type="submit" name="buscar_cliente" id="buscar_cliente" value="Buscar" />
-      </p>
+    <legend align="center"><h3>Clientes</h3></legend>
+    <select name="txtId_cliente" id="txtId_cliente">
+      <option disabled="disabled" selected="true">Seleccionar Cliente</option>
+      {% for cli in clientes %}
+      <option value="{{cli.0}}">{{"ID CLIENTE: " + cli.0 | string()+ " CLIENTE: " + cli.1 + " " + cli.2}}</option>
+      {% endfor %}
+    </select>
   </fieldset>
   <fieldset>
-  	  <legend align="center"><h3>Pedido a abonar</h3></legend>
-  	  <label for="id_boleta">ID Boleta:</label>
-  	  <input type="text" name="id_boleta" id="id_boleta" />
-  	  
-    <label for="total">Total Boleta</label>
-  	  <input name="total" type="text" id="total" readonly="readonly" />
-  	  <input type="submit" name="buscar_cliente2" id="buscar_cliente2" value="Buscar" />
-    
+    <legend align="center"><h3>Boleta</h3></legend>
+    <select name="txtId_boleta" id="txtId_boleta">
+      <option disabled="disabled" selected="true">Seleccionar Pedido</option>
+      {% for bol in boletas %}
+        <!-- para castear a str en jinja2 tenemos que agregar despues del objeto | string() -->
+        <option value="{{bol.0}}">{{"ID BOLETA: "+ bol.0 | string() +" FECHA: " + bol.1 | string() + " ID CLIENTE: " + bol.2 | string() + " ID VENDEDOR: " + bol.3 | string()}}</option>
+      {% endfor %}
+    </select>
+  </fieldset>
+  <fieldset>
+    <legend align="center"><h3>Pedido a Abonar</h3></legend>
+    <select name="txtId_detalleboleta" id="txtId_detalleboleta">
+      <option disabled="disabled" selected="true">Seleccionar Pedido</option>
+      {% for detbol in detalleboletas %}
+        <option value="{{detbol.0}}">{{"ID BOLETA: " + detbol.3 | string() + " DETALLE: "+ detbol.1 + " TOTAL: " + detbol.2 | string()}}</option>
+      {% endfor %}
+    </select>
   </fieldset>
   <fieldset>
   	<legend align="center"><h3>Abono </h3></legend>
   	<p>
   	  <label for="monto">Monto a Abonar</label>
-  	  <input type="text" name="monto" id="monto" />
+  	  <input type="text" name="txtMonto" id="txtMonto" />
   	</p>
   	<p>
-  	  <input type="submit" name="abonar" id="abonar" value="Abonar" />
-  	  <input type="submit" name="cancelar" id="cancelar" value="Cancelar" />
+  	  <input type="submit" name="btnAbonar" id="btnAbonar" value="Abonar" />
+  	  <input type="reset" name="cancelar" id="cancelar" value="Cancelar" />
   	</p>    
   </fieldset>
 </form>

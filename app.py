@@ -4,15 +4,25 @@ import mantenedorVendedor
 import mantenedorServicio
 import mantenedorProducto
 import mantenedorTipoProducto
+import mantenedorAbono
+import mantenedorDetalleBoleta
+import mantenedorBoleta
+import mantenedorDetalleCotizacion
+import mantenedorCotizacion
 #importar modelos
 import claseCliente
 import claseVendedor
 import claseServicio
 import claseProducto
 import claseTipoProducto
+import claseAbono
+import claseDetalleBoleta
+import claseBoleta
+import claseDetalleCotizacion
+import claseCotizacion
 #importar flask y las librerias a ocupar
 from flask import Flask,render_template,request,flash,redirect,url_for
-
+from datetime import date
 app = Flask(__name__)
 #Programa Principal de Arranque
 #Rutear el home (la raiz del sitio)
@@ -355,9 +365,9 @@ def CRUDTipoProducto():
         #es necesario redireccionar para que no se caiga luego de insertar
         return redirect(url_for('MantenedorTipoProducto'))
 #----------------------------Fin CRUD Tipo Producto-------------
-#--FIN RENDER MANTENEDORES
+#--FIN RENDER MANTENEDORES------------------------
 
-#--RENDER TRANSACCIONES
+#--RENDER TRANSACCIONES----------------------------
 #Renderizar pagina Ventas
 @app.route('/Ventas')
 def Ventas():
@@ -373,8 +383,32 @@ def Cotizaciones():
 #Renderizar pagina Cotizaciones
 @app.route('/Abonos')
 def Abonos():
-    datos = mantenedorProducto.consultar()
-    return render_template('abonarProductoServicio.html',ventas=datos)
+    datosClientes = mantenedorCliente.consultar()
+    datosVendedores = mantenedorVendedor.consultar()
+    datosBoletas = mantenedorBoleta.consultar()
+    datosDetalleBoletas = mantenedorDetalleBoleta.consultar()
+    return render_template('abonarProductoServicio.html',clientes=datosClientes,vendedores=datosVendedores,boletas = datosBoletas,detalleboletas = datosDetalleBoletas)
+
+#Funcion de abonar
+@app.route('/Abonar', methods=['POST'])
+def Abonar():
+    if request.method == 'POST':
+            #CREATE
+            try:
+                auxBotonAbonar = request.form['btnAbonar']
+                if auxBotonAbonar == 'Abonar':
+                    auxMonto = request.form['txtMonto']
+                    auxFecha = date.today()
+                    auxId_detalleboleta= request.form['txtId_detalleboleta']
+                    auxAbono = claseAbono.Abono(0,auxMonto,auxFecha,auxId_detalleboleta)
+                    mantenedorAbono.insertar(auxAbono)
+                    print("Datos guardados")
+                    #flash("Datos Guardados")
+            except:
+                print("Datos no guardados")
+                #flash("Datos no guardados")
+            #FIN CREATE
+            return redirect(url_for('Abonos'))
 
 
 
