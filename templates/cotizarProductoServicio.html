@@ -123,54 +123,67 @@
 
 <!--CONTENIDO-->  
 <div class="container" style="margin-bottom:50px">
-<h1 align="center">Cotizar Productos o Servicios</h1>
-<form action="" method="get" style="text-align:center">
-     <fieldset>
-      <h3>
-      <legend>Vendedor</legend>
-    </h3>
-    <p>
-      <label for="rut_vendedor">Rut Vendedor:</label>
-      <input type="text" name="rut_vendedor" id="rut_vendedor" />
-      <label for="nombre">Nombre Vendedor:</label>
-      <input name="nombre" type="text" id="nombre" readonly="readonly" />
-      <input type="submit" name="buscar_vendedor" id="buscar_vendedor" value="Buscar" />
-  </p>
+<h1 align="center">Cotizar Productos</h1>
+<form action="/Cotizar" method="POST" style="text-align:center">
+	<fieldset>
+    <legend align="center"><h3>Vendedor</h3></legend>
+    <select name="txtId_vendedor" id="txtId_vendedor">
+      <option disabled="disabled" selected="true">Seleccionar Vendedor</option>
+      {% for ven in vendedores %}
+      <option value="{{ven.0}}">{{"ID VENDEDOR: "+ ven.0 | string() + " VENDEDOR: " + ven.2 + " " + ven.3}}</option>
+      {% endfor %}
+    </select>
   </fieldset>
   <fieldset>
-      <h3>
-        <legend>Cliente</legend>
+    <legend align="center"><h3>Clientes</h3></legend>
+    <select name="txtId_cliente" id="txtId_cliente">
+      <option disabled="disabled" selected="true">Seleccionar Cliente</option>
+      {% for cli in clientes %}
+      <option value="{{cli.0}}">{{"ID CLIENTE: " + cli.0 | string()+ " CLIENTE: " + cli.1 + " " + cli.2}}</option>
+      {% endfor %}
+    </select>
+  </fieldset>
+
+  <fieldset>
+    <h3>
+      <legend>Lista de Productos</legend>
       </h3>
-      <p>
-        <label for="rut_cliente">Rut Cliente:</label>
-        <input type="text" name="rut_cliente" id="rut_cliente" />
-        <label for="nombre_cliente">Nombre Cliente:</label>
-        <input name="nombre_cliente" type="text" id="nombre_cliente" readonly="readonly" />
-        <input type="submit" name="buscar_cliente" id="buscar_cliente" value="Buscar" />
-      </p>
-   </fieldset>
-   <fieldset>
-  <h3>
-    <legend>Cotizar</legend>
-  </h3>
-	<p>
-	  <label for="tipo_producto">Tipo de Producto o Servicio:</label>
-	  <input type="text" name="tipo_producto" id="tipo_producto" />
-  </p>
-	<p>
-	  <label for="alto" >Descripción:</label>
-      <textarea name="alto" id="alto"></textarea>
-  </p>
-	<p>
-	  <label for="alto2">Alto:</label>
-	  <input type="text" name="alto2" id="alto2" />
-	</p>
-	<p>
-	  <label for="ancho">Ancho:</label>
-	  <input type="text" name="ancho" id="ancho" />
-	</p>
-	<p>
-      <input type="submit" name="cotizar" id="cotizar" value="Cotizar" />
+      <table width="600" border="1" align="center">
+        <tr>
+          <td>Id Producto</td>
+          <td>Producto</td>
+          <td>Ancho</td>
+          <td>Alto</td>
+          <td>Color</td>
+          <td>Precio</td>
+        </tr>
+        {% for pro in productos%}
+          <tr>
+            <td>{{pro.0}}</td>
+            <td>{{ pro.1 }}</td>
+            <td>{{ pro.6 }}</td>
+            <td>{{ pro.7 }}</td>
+            <td>{{ pro.3 }}</td>
+            <!--dar formato sin decimales-->
+            <td>${{ '%.0f' | format(pro.10)  }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+  </fieldset>
+  <fieldset>
+    <label for="txtTotal">Detalle Cotizacion: </label>
+    <textarea name="txtDetalle" id="txtDetalle" cols="20%" rows="3" /></textarea>
+  </fieldset>
+  <fieldset>
+    <legend>
+      <h3>Total</h3>
+    </legend>
+    <label for="txtTotal">Total: </label>
+    <input type="text" name="txtTotal" id="txtTotal" />
+  </fieldset>
+  <fieldset>
+      <p align="center">
+        <input type="submit" name="btnCotizar" id="btnCotizar" value="Cotizar" />
         <input type="reset" name="cancelar" id="cancelar" value="Cancelar" />
       </p>
       <p>&nbsp;</p>

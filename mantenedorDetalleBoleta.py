@@ -97,6 +97,43 @@ def eliminar(id_detalleboleta):
         print("Error al eliminar datos ", ex)
     conexion.close
 
+def minimo():
+    conexion = conectar()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT MIN(total)FROM detalle_boleta")
+            #usamos fetchall para traer todos los datos
+            montoMinimo = cursor.fetchone()
+            return montoMinimo[0]
+    except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
+        print("Ocurrio un error al consultar: ", e)
+    conexion.close
+    #-----------------
+def maximo():
+    conexion = conectar()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT MAX(total)FROM detalle_boleta")
+            #usamos fetchall para traer todos los datos
+            montoMaximo = cursor.fetchone()
+            return montoMaximo[0]
+    except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
+        print("Ocurrio un error al consultar: ", e)
+    conexion.close
+    #-----------------
+
+def total():
+    conexion = conectar()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT SUM(total) FROM detalle_boleta")
+            #usamos fetchall para traer todos los datos
+            totalVenta = cursor.fetchone()
+            return totalVenta[0]
+    except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
+        print("Ocurrio un error al consultar: ", e)
+    conexion.close
+    #-----------------
 #Programa principal TESTER
 #Prueba insertar OK
 #print("Conectado")
@@ -119,3 +156,5 @@ def eliminar(id_detalleboleta):
 #Prueba de eliminar servicio por id servicio OK
 #eliminar(2)
 #consultar()
+#print(minimo())
+#print(maximo())

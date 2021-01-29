@@ -94,6 +94,18 @@ def eliminar(id_boleta):
         print("Error al eliminar datos ", ex)
     conexion.close
 
+def contar():
+    conexion = conectar()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT COUNT(id_boleta)FROM boleta")
+            #usamos fetchall para traer todos los datos
+            contBoleta = cursor.fetchone()
+            return contBoleta[0]
+    except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
+        print("Ocurrio un error al consultar: ", e)
+    conexion.close
+    #-----------------
 #Programa principal TESTER
 #Prueba insertar OK
 #print("Conectado")

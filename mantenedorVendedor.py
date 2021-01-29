@@ -115,6 +115,18 @@ def eliminar(Rut):
         print("Error al eliminar datos ", ex)
     conexion.close
 
+def contar():
+    conexion = conectar()
+    try:
+        with conexion.cursor() as cursor:
+            cursor.execute("SELECT COUNT(id_vendedor)FROM vendedor")
+            #usamos fetchall para traer todos los datos
+            contVendedor = cursor.fetchone()
+            return contVendedor[0]
+    except (pymysql.err.OperationalError,pymysql.err.InternalError) as e:
+        print("Ocurrio un error al consultar: ", e)
+    conexion.close
+
 #Programa principal
 #Prueba insertar OK
 #print("Conectado")
@@ -138,3 +150,4 @@ def eliminar(Rut):
 #Prueba de eliminar vendedor por rut OK
 #eliminar(666)
 #consultar()
+#print(contar())

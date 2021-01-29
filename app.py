@@ -400,6 +400,25 @@ def Comprar():
 def Cotizaciones():
     datos = mantenedorProducto.consultar()
     return render_template('cotizarProductoServicio.html',ventas=datos)
+@app.route('/Cotizar',methods=['POST'])
+def Cotizar():
+    if request.method == 'POST':
+        try:
+            auxBtnCotizar = request.form['btnCotizar']
+            if auxBtnCotizar == 'Cotizar':
+                auxFecha=date.today()
+                auxIdCliente=request.form['txtId_cliente']
+                auxIdVendedor=request.form['txtId_vendedor']
+                auxCotizar=claseCotizacion.Cotizacion(0,auxFecha,auxIdCliente,auxIdVendedor)
+                mantenedorCotizacion.insertar(auxCotizar)
+                auxDetalle = request.form['txtDetalle']
+                auxTotal= request.form['txtTotal']
+                auxDetalleCotizacion=claseDetalleCotizacion.DetalleCotizacion(0,auxDetalle,auxTotal,1,1,1)
+                mantenedorDetalleCotizacion.insertar(auxDetalleCotizacion)
+        except:
+            print("Compra no realizada")
+            #flash("Compra no realizada")
+        return redirect(url_for('Cotizaciones'))
 
 #Renderizar pagina Cotizaciones
 @app.route('/Abonos')
@@ -430,6 +449,18 @@ def Abonar():
                 #flash("Datos no guardados")
             #FIN CREATE
             return redirect(url_for('Abonos'))
+
+#Render pagina reporte
+@app.route('/Repoerte')
+def Reporte():
+    contarVendedores=mantenedorVendedor.contar()
+    contarClientes=mantenedorCliente.contar()
+    contarBoleta=mantenedorBoleta.contar()
+    contarCotizacion=mantenedorCotizacion.contar()
+    ventaMinima=mantenedorDetalleBoleta.minimo()
+    ventaMaxima=mantenedorDetalleBoleta.maximo()
+    totalVentas=mantenedorDetalleBoleta.total()
+    return render_template ('reporteEstadistica.html',cantVendedores=contarVendedores,cantClientes=contarClientes,cantBoletas=contarBoleta,cantCotizaciones=contarCotizacion,ventaMenor=ventaMinima,ventaMayor=ventaMaxima,ventaTotal=totalVentas)
 
 
 
